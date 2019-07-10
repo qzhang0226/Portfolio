@@ -1,0 +1,18 @@
+:root{
+  --mainDark: #000000;
+  --mainWhite: #f3f3f3;
+  --mainBlue: #E3F2F3;
+}
+
+body{
+  background: var(--mainWhite);
+}
+
+a{
+  color: var(--mainDark);
+}
+
+a:hover{
+  color: var(--mainDark);
+  text-decoration: none;
+}
