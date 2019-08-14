@@ -2,8 +2,7 @@ import React from 'react';
 import {IState, IAction} from './interfaces';
 
 const initialState: IState = {
-    pictures: [],
-    experience: [],
+    data: Object,
 };
 
 export const Store = React.createContext<IState | any>(initialState);
@@ -11,7 +10,7 @@ export const Store = React.createContext<IState | any>(initialState);
 function reducer(state: IState, action: IAction): IState {
     switch (action.type) {
         case 'FETCH_ABOUT_DATA':
-            return {...state, pictures: action.payload}   
+            return {...state, data: action.payload}   
         default:
             return state;
     }

@@ -1,11 +1,12 @@
 :root{
   --mainDark: #000000;
-  --mainWhite: #f3f3f3;
+  --mainWhite: #fff;
   --mainBlue: #E3F2F3;
 }
 
 body{
   background: var(--mainWhite);
+  font-family: 'Cardo', serif;
 }
 
 a{

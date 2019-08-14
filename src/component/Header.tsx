@@ -19,8 +19,7 @@ export default function Header (props: IAppProps) {
 const HeaderWrapper = styled("div")`
     font-size: 1.41rem;
     font-style: normal;
-    font-weight: lighter;
-    font-family: 'Source Sans Pro', 'sans-serif';
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
+    word-spacing: 0;
 `

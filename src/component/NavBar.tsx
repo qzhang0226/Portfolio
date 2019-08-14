@@ -23,6 +23,7 @@ export default function NavBar () {
 const NavWrapper = styled("nav")`
   background: var(--mainWhite);
   font-weight: 300;
+  margin-bottom: 2rem;
   .navbar-nav{
     margin: 0 auto;
   }

@@ -1,6 +1,5 @@
 export interface IState {
-    pictures: Array<any>,
-    experience: Array<any>,
+    data: Object
 }
 
 export interface IAction{
