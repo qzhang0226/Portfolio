@@ -24,11 +24,13 @@ export default function About (props: IAppProps) {
                 <div className="img_content"><h1>{aboutData.title}</h1></div>
             </div>           
             <div className="about_content_container">
-                <div className="header_content">
-                    {aboutData.header}
-                </div>
-                <div className="story_content">
-                    {aboutData.content}
+                <div className="offset-md-2 col-md-8 offset-md-2">
+                    <div className="header_content">
+                        {aboutData.header}
+                    </div>
+                    <div className="story_content">
+                        {aboutData.content}
+                    </div>
                 </div>
             </div>
         </CardWrapper>
@@ -39,17 +41,18 @@ export default function About (props: IAppProps) {
 
 const CardWrapper = styled("div")`
     .image_container{
+        background-color: var(--mainDark);
         position: relative;
         text-align: center;
         max-height: 650px;
         overflow: hidden;
     }
     img{
+        opacity: .9;
         display: block;
         width: 100%;
         max-width: 100%;
         height: auto !important;
-        display: block;
     }
     .img_content {
         position: absolute;
@@ -63,13 +66,13 @@ const CardWrapper = styled("div")`
     }
     .about_content_container{
         height: 400px;
-        margin-top: 60px;
+        padding-top: 60px;
         text-align: center;
         color: var(--mainDark);
     }
     .header_content{
         font-size: 1.41rem;
-        margin-bottom: 30px;
+        padding-bottom: 30px;
     }
 
 `

@@ -2,9 +2,9 @@ import React from 'react';
 import Header from './component/Header';
 import NavBar from './component/NavBar';
 import { Store } from './Store';
-import { fetchAboutData } from './actions/Action';
 import { Switch, Route } from 'react-router-dom';
 import About from './component/About';
+import Experience from './component/Experience';
 import './App.css';
 
 const App: React.FC = () => {
@@ -14,6 +14,7 @@ const App: React.FC = () => {
       <Header headerName="QI ZHANG"/>
       <NavBar />
       <About />
+      <Experience />
       <Switch>
         <Route exact path="/"></Route>
       </Switch>
