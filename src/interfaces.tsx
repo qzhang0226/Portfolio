@@ -1,5 +1,6 @@
 export interface IState {
-    data: Object
+    about: Object,
+    profile: Object,
 }
 
 export interface IAction {

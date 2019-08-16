@@ -1,20 +1,19 @@
 import * as React from 'react';
 import { Store } from '../Store';
 import { fetchAboutData } from '../actions/Action';
+import { IAppProps } from '../interfaces';
 import styled from 'styled-components';
-
-export interface IAppProps {
-}
 
 export default function About (props: IAppProps) {
 
     const {state, dispatch} = React.useContext(Store);
 
     React.useEffect(() => {
-      fetchAboutData(dispatch)
-    }, [])
+        console.log(state.about)
+        state.about.length === 0 && fetchAboutData(dispatch)
+    })
   
-    const aboutData = state.data[0];
+    const aboutData = state.about[0];
     
     return (
         aboutData ?
