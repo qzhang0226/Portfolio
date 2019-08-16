@@ -9,9 +9,8 @@ export default function About (props: IAppProps) {
     const {state, dispatch} = React.useContext(Store);
 
     React.useEffect(() => {
-        console.log(state.about)
-        state.about.length === 0 && fetchAboutData(dispatch)
-    })
+        fetchAboutData(dispatch)
+    }, [])
   
     const aboutData = state.about[0];
     

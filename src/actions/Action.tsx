@@ -15,6 +15,6 @@ export const fetchProfileData = async(dispatch: any) => {
   const dataJSON = await data.json();
   return dispatch({
     type: 'FETCH_PROFILE_DATA',
-    payload: dataJSON.data
+    payload: dataJSON
   })
 }
