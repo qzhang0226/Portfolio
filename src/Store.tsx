@@ -4,6 +4,7 @@ import {IState, IAction} from './interfaces';
 const initialState: IState = {
     about: Object,
     profile: Object,
+    project: Object,
 };
 
 
@@ -15,6 +16,8 @@ function reducer(state: IState, action: IAction): IState {
             return {...state, about: action.payload};
         case 'FETCH_PROFILE_DATA':
             return {...state, profile: action.payload};
+        case 'FETCH_PROJECT_DATA':
+            return {...state, project: action.payload};
         default:
             return state;
     }

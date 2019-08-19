@@ -18,3 +18,13 @@ export const fetchProfileData = async(dispatch: any) => {
     payload: dataJSON
   })
 }
+
+export const fetchProjectData = async(dispatch: any) => {
+  const URL = `${process.env.REACT_APP_API_BASE_URL}project`;
+  const data = await fetch(URL);
+  const dataJSON = await data.json();
+  return dispatch({
+    type: 'FETCH_PROJECT_DATA',
+    payload: dataJSON
+  })
+}

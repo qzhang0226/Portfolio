@@ -9,9 +9,9 @@ export default function NavBar () {
           <li className="nav-item">
             <Link to="/">Home</Link>
           </li>
-          <li className="nav-item ml-3">
+          {/* <li className="nav-item ml-3">
             <Link to="/blog">Blog</Link>
-          </li>
+          </li> */}
           <a href="https://www.linkedin.com/in/qi-zhang-0226/" target="_blank" className="linkedin-link">
             <i className="fab fa-linkedin-in" />
           </a>          
@@ -23,7 +23,7 @@ export default function NavBar () {
 const NavWrapper = styled("nav")`
   background: var(--mainWhite);
   font-weight: 300;
-  margin-bottom: 2rem;
+  margin-bottom: 2em;
   .navbar-nav{
     margin: 0 auto;
   }

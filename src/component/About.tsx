@@ -21,7 +21,7 @@ export default function About (props: IAppProps) {
                 <img src={aboutData.postImage} alt="about image" />
                 <div className="img_content"><h1>{aboutData.title}</h1></div>
             </div>           
-            <div className="about_content_container">
+            <div className="container">
                 <div className="offset-md-2 col-md-8 offset-md-2">
                     <div className="header_content">
                         {aboutData.header}
@@ -47,30 +47,28 @@ const CardWrapper = styled("div")`
     }
     img{
         opacity: .9;
-        display: block;
         width: 100%;
-        max-width: 100%;
-        height: auto !important;
     }
     .img_content {
+        text-align: center;
+        color: var(--mainWhite);
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
-    .img_content h1{
+    .container{
+        height: auto;
+        margin-top: 5em;
+        margin-bottom: 5em;
         text-align: center;
-        color: var(--mainWhite);
-    }
-    .about_content_container{
-        height: 400px;
-        padding-top: 60px;
-        text-align: center;
-        color: var(--mainDark);
     }
     .header_content{
-        font-size: 1.41rem;
-        padding-bottom: 30px;
+        font-size: 1.13em;
+        padding-bottom: 1em;
+    }
+    .story_content{
+        line-height: 1.8em;
     }
 
 `
