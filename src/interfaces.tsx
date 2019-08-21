@@ -12,3 +12,11 @@ export interface IAction {
 export interface IAppProps {
     
 }
+
+export interface TextProps{
+    storyProps: {
+        bgColor: String,
+        top: String,
+        bottom: String
+    }
+}

@@ -5,9 +5,16 @@ import { Switch, Route } from 'react-router-dom';
 import About from './component/About';
 import Experience from './component/Experience';
 import Projects from './component/projects';
+import Story from './component/Story';
 import './App.css';
 
 const App: React.FC = () => {
+
+  const storyProps = {
+    bgColor: "blue",
+    top: "Do not go where the path may lead. Instead, go where there is no path and leave a trail", 
+    bottom: "Ralph Waldo Emerson",
+  }
 
   return (
     <React.Fragment>
@@ -16,6 +23,7 @@ const App: React.FC = () => {
       <About />
       <Experience />
       <Projects />
+      <Story storyProps={storyProps} />
       <Switch>
         <Route exact path="/"></Route>
       </Switch>

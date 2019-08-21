@@ -57,12 +57,7 @@ const CardWrapper = styled("div")`
         left: 50%;
         transform: translate(-50%, -50%);
     }
-    .container{
-        height: auto;
-        margin-top: 5em;
-        margin-bottom: 5em;
-        text-align: center;
-    }
+ 
     .header_content{
         font-size: 1.13em;
         padding-bottom: 1em;
