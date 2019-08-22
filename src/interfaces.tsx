@@ -15,8 +15,8 @@ export interface IAppProps {
 
 export interface TextProps{
     storyProps: {
-        bgColor: String,
-        top: String,
-        bottom: String
+        bgColor: string,
+        top: string,
+        bottom: string
     }
 }
