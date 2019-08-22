@@ -17,3 +17,8 @@ a:hover{
   color: var(--mainDark);
   text-decoration: none;
 }
+
+.container{
+  margin-top: 5em;
+  text-align: center;
+}

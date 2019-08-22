@@ -20,3 +20,13 @@ export interface TextProps{
         bottom: string
     }
 }
+
+export interface IFormProps {
+    // action: string;
+}
+
+export interface IFormState {
+    [key: string]: any;
+    // errors: IErrors;
+    // submitSuccess?: boolean;
+}

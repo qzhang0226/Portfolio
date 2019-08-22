@@ -6,13 +6,14 @@ import About from './component/About';
 import Experience from './component/Experience';
 import Projects from './component/projects';
 import Story from './component/Story';
+import Contact from './component/Contact';
 import './App.css';
 
 const App: React.FC = () => {
 
   const storyProps = {
     bgColor: "blue",
-    top: "Do not go where the path may lead. Instead, go where there is no path and leave a trail", 
+    top: `"Do not go where the path may lead. Instead, go where there is no path and leave a trail"`, 
     bottom: "Ralph Waldo Emerson",
   }
 
@@ -24,6 +25,7 @@ const App: React.FC = () => {
       <Experience />
       <Projects />
       <Story storyProps={storyProps} />
+      <Contact />
       <Switch>
         <Route exact path="/"></Route>
       </Switch>
