@@ -21,7 +21,7 @@ export default function About (props: IAppProps) {
                 <img src={aboutData.postImage} alt="about image" />
                 <div className="img_content"><h1>{aboutData.title}</h1></div>
             </div>           
-            <div className="container">
+            {/* <div className="container">
                 <div className="offset-md-2 col-md-8 offset-md-2">
                     <div className="header_content">
                         {aboutData.header}
@@ -30,7 +30,7 @@ export default function About (props: IAppProps) {
                         {aboutData.content}
                     </div>
                 </div>
-            </div>
+            </div> */}
         </CardWrapper>
         :
         <React.Suspense fallback={<div>loading...</div>}></React.Suspense>
