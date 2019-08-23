@@ -12,7 +12,7 @@ export default function NavBar () {
           {/* <li className="nav-item ml-3">
             <Link to="/blog">Blog</Link>
           </li> */}
-          <a href="https://www.linkedin.com/in/qi-zhang-0226/" target="_blank" className="linkedin-link">
+          <a href="https://www.linkedin.com/in/qi-zhang-0226/" target="_blank" rel="noopener noreferrer" className="linkedin-link">
             <i className="fab fa-linkedin-in" />
           </a>          
         </div>

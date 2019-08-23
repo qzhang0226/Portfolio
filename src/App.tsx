@@ -7,6 +7,7 @@ import Experience from './component/Experience';
 import Projects from './component/projects';
 import Story from './component/Story';
 import Contact from './component/Contact';
+import Map from './component/Map';
 import './App.css';
 
 const App: React.FC = () => {
@@ -26,6 +27,7 @@ const App: React.FC = () => {
       <Projects />
       <Story storyProps={storyProps} />
       <Contact />
+      <Map />
       <Switch>
         <Route exact path="/"></Route>
       </Switch>

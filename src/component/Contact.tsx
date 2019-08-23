@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { IFormProps, IFormState } from '../interfaces';
 import { Store } from '../Store';
 import { submitForm } from '../actions/Action';
@@ -46,7 +46,7 @@ export default function Contact(props: IFormProps) {
     return(
         state.message === "" ?
         <FormWrapper onSubmit={handleSubmit}>               
-            <div className="container offset-md-3 col-md-6 offset-md-3">
+            <div className="container offset-sm-2 col-sm-8 offset-sm-2">
                 <div className="contact_header">GET IN TOUCH</div>
                 <div className="row oneRow_twoInput">
                     <input 
@@ -84,7 +84,7 @@ export default function Contact(props: IFormProps) {
             </div>
         </FormWrapper>
         :
-        <div>{state.message}</div>
+        <ThankUWrapper>{state.message}</ThankUWrapper>
     )
 }
 
@@ -150,4 +150,18 @@ const FormWrapper = styled("form")`
         border: solid rgba(0, 0, 0, 1) 0px;
         cursor: pointer !important;
     }
+    .btn:hover{
+        background-color: rgba(0, 0, 0, 0.6); 
+        border-color: rgba(0, 0, 0, 1);
+    }
+    @media only screen and (max-width: 575px) {
+        padding: 0 30px;
+    }
+`
+
+const ThankUWrapper = styled("div")`
+    height: 300px;
+    text-align: center;
+    padding: 150px 0;
+    font-size: 2.5em;
 `

@@ -1,6 +1,21 @@
 
+export const getBaseUrl = () => {
+  switch (process.env.REACT_APP_DEV_ENV) {
+    case "0":
+      var devBaseUrl = process.env.REACT_APP_DEV_BASE_URL;
+      return devBaseUrl;
+    case "1":      
+      var prodBaseUrl = process.env.REACT_APP_API_BASE_URL;
+      return prodBaseUrl; 
+    default:
+      break;
+  }
+}
+
+
+
 export const fetchAboutData = async(dispatch: any) => {
-    const URL = `${process.env.REACT_APP_API_BASE_URL}about`;
+    const URL = `${getBaseUrl()}about`;
     const data = await fetch(URL);
     const dataJSON = await data.json();
     return dispatch({
@@ -10,7 +25,7 @@ export const fetchAboutData = async(dispatch: any) => {
 }
 
 export const fetchProfileData = async(dispatch: any) => {
-  const URL = `${process.env.REACT_APP_API_BASE_URL}profile`;
+  const URL = `${getBaseUrl()}profile`;
   const data = await fetch(URL);
   const dataJSON = await data.json();
   return dispatch({
@@ -20,7 +35,7 @@ export const fetchProfileData = async(dispatch: any) => {
 }
 
 export const fetchProjectData = async(dispatch: any) => {
-  const URL = `${process.env.REACT_APP_API_BASE_URL}project`;
+  const URL = `${getBaseUrl()}project`;
   const data = await fetch(URL);
   const dataJSON = await data.json();
   return dispatch({
@@ -40,13 +55,13 @@ export const submitForm = async(formObj: object, dispatch: any) => {
     body: JSON.stringify(formObj),
   };
   try{
-    const URL = `${process.env.REACT_APP_API_BASE_URL}contact`;
+    const URL = `${getBaseUrl()}contact`;
     const data = await fetch(URL, settings);
     const dataJSON = await data.json();
     return dispatch({
       type: 'POST_FORM_DATA',
       payload: "Thanks for submitting!"
-    }), dataJSON;
+    })
   } catch(err) {
     return err;
   }
