@@ -1,97 +1,92 @@
-import * as React from 'react';
-import { Store } from '../Store';
+import React, { useState, useEffect } from 'react';
 import { IFormProps, IFormState } from '../interfaces';
+import { Store } from '../Store';
+import { submitForm } from '../actions/Action';
 import styled from 'styled-components';
 
-class Contact extends React.Component<IFormProps, IFormState> {
-    constructor(props: IFormProps){
-        super(props);
-
-        this.state = {
-            name: '',
-            email: '',
-            subject: '',
-            textarea: '',
-            postObj: {}
-        }
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+export default function Contact(props: IFormProps) {
+    const initialState: IFormState = {
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
     }
+    const [formState, setFormState] = useState(initialState);
+    const {state, dispatch} = React.useContext(Store);
 
-    private handleChange(e: any) {
+    const handleChange = (e: any) => {
         const target = e.target;
         const value = target.value;
         const name = target.name;
-        this.setState({
+        setFormState(inputs => ({
+            ...inputs, 
             [name]: value
-        });
+        }));
     }
 
-    private handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
 
-        if(this.validateForm()){
-            this.setState({
-                postObj: {
-                    name: this.state.name,
-                    email: this.state.email,
-                    subject: this.state.subject,
-                    message: this.state.message,
-                }
-            })
+        if(validateForm()){
+            const postObj = {
+                name: formState.name,
+                email: formState.email,
+                subject: formState.subject,
+                message: formState.message,
+            }
+            submitForm(postObj, dispatch)
         }
     }
 
-    private validateForm(): boolean {
+    const validateForm = () => {
         return true;
     }
 
-    public render() {
-        return(
-            <FormWrapper onSubmit={this.handleSubmit}>               
-                <div className="container offset-md-3 col-md-6 offset-md-3">
-                    <div className="contact_header">GET IN TOUCH</div>
-                    <div className="row oneRow_twoInput">
-                        <input 
-                            name="name" 
-                            type="text" 
-                            placeholder="Name"
-                            value={this.state.name} 
-                            onChange={this.handleChange} />                    
-                        <input 
-                            name="email" 
-                            type="text" 
-                            className="email_input"
-                            placeholder="Email"
-                            value={this.state.email} 
-                            onChange={this.handleChange} />
-                    </div>
-                    <div className="row oneRow_input">
-                        <input 
-                        name="subject" 
-                        type="text"
-                        placeholder="Subject"
-                        value={this.state.subject} 
-                        onChange={this.handleChange} />
-                    </div>
-                    <div className="row">
-                        <textarea 
-                        name="textarea"
-                        value={this.state.textarea} 
-                        onChange={this.handleChange}
-                        placeholder="Type your message here..."/>
-                    </div>
-                    <div className="row">
-                        <button type="submit" className="btn btn-primary">Submit</button>
-                    </div>
+    const { name, email, subject, message} = formState;
+    return(
+        state.message === "" ?
+        <FormWrapper onSubmit={handleSubmit}>               
+            <div className="container offset-md-3 col-md-6 offset-md-3">
+                <div className="contact_header">GET IN TOUCH</div>
+                <div className="row oneRow_twoInput">
+                    <input 
+                        name="name" 
+                        type="text" 
+                        placeholder="Name"
+                        value={name} 
+                        onChange={handleChange} />                    
+                    <input 
+                        name="email" 
+                        type="text" 
+                        className="email_input"
+                        placeholder="Email"
+                        value={email} 
+                        onChange={handleChange} />
                 </div>
-            </FormWrapper>
-        )
-    }
+                <div className="row oneRow_input">
+                    <input 
+                    name="subject" 
+                    type="text"
+                    placeholder="Subject"
+                    value={subject} 
+                    onChange={handleChange} />
+                </div>
+                <div className="row">
+                    <textarea 
+                    name="message"
+                    value={message} 
+                    onChange={handleChange}
+                    placeholder="Type your message here..."/>
+                </div>
+                <div className="row">
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </FormWrapper>
+        :
+        <div>{state.message}</div>
+    )
 }
-
-export default Contact;
 
 const FormWrapper = styled("form")`
     padding: 0 0 6.5em 0;

@@ -28,3 +28,26 @@ export const fetchProjectData = async(dispatch: any) => {
     payload: dataJSON
   })
 }
+
+export const submitForm = async(formObj: object, dispatch: any) => {
+  const settings = {
+    method: 'POST',
+    headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        
+    },
+    body: JSON.stringify(formObj),
+  };
+  try{
+    const URL = `${process.env.REACT_APP_API_BASE_URL}contact`;
+    const data = await fetch(URL, settings);
+    const dataJSON = await data.json();
+    return dispatch({
+      type: 'POST_FORM_DATA',
+      payload: "Thanks for submitting!"
+    }), dataJSON;
+  } catch(err) {
+    return err;
+  }
+}

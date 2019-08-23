@@ -2,6 +2,7 @@ export interface IState {
     about: Object,
     profile: Object,
     project: Object,
+    message: string,
 }
 
 export interface IAction {
