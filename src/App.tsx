@@ -8,6 +8,7 @@ import Projects from './component/projects';
 import Story from './component/Story';
 import Contact from './component/Contact';
 import Map from './component/Map';
+import Footer from './component/Footer';
 import './App.css';
 
 const App: React.FC = () => {
@@ -20,7 +21,7 @@ const App: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Header headerName="QI ZHANG"/>
+      <Header name="QI ZHANG"/>
       <NavBar />
       <About />
       <Experience />
@@ -28,6 +29,7 @@ const App: React.FC = () => {
       <Story storyProps={storyProps} />
       <Contact />
       <Map />
+      <Footer name="2019 by Qi Zhang"/>
       <Switch>
         <Route exact path="/"></Route>
       </Switch>

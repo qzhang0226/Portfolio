@@ -162,6 +162,6 @@ const FormWrapper = styled("form")`
 const ThankUWrapper = styled("div")`
     height: 300px;
     text-align: center;
-    padding: 150px 0;
+    padding: 120px 0;
     font-size: 2.5em;
 `

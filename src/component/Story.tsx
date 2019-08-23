@@ -1,12 +1,12 @@
 import React from 'react';
-import { TextProps } from '../interfaces';
+import { ITextProps } from '../interfaces';
 import styled from 'styled-components';
 
 interface storyDivProps {
     bgColor: string;
 }
 
-export default function Story (props: TextProps) {
+export default function Story (props: ITextProps) {
     const {bgColor, top, bottom} = props.storyProps;
     return (
         <Wrapper bgColor={bgColor}>

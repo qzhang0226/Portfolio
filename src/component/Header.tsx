@@ -1,16 +1,13 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { INameProps } from '../interfaces';
 
-export interface IAppProps {
-    headerName: string
-}
-
-export default function Header (props: IAppProps) {
+export default function Header (props: INameProps) {
     return (
         <HeaderWrapper>
             <Link to="/">
-                <p>{props.headerName}</p>
+                <p>{props.name}</p>
             </Link>
         </HeaderWrapper>
     );

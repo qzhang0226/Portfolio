@@ -14,7 +14,7 @@ export interface IAppProps {
     
 }
 
-export interface TextProps{
+export interface ITextProps{
     storyProps: {
         bgColor: string,
         top: string,
@@ -30,4 +30,8 @@ export interface IFormState {
     [key: string]: any;
     // errors: IErrors;
     // submitSuccess?: boolean;
+}
+
+export interface INameProps {
+    name: string
 }

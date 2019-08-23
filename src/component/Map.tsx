@@ -1,12 +1,54 @@
-import React from 'react';
-import { GoogleMap, withScriptjs, withGoogleMap } from 'react-google-maps';
+import React, { useState } from 'react';
+import { 
+  GoogleMap, 
+  withScriptjs, 
+  withGoogleMap, 
+  Marker,
+  InfoWindow, 
+} from 'react-google-maps';
 import styled from 'styled-components';
 
 const MyMap: React.FC = () => {
+
+  const [selectedPos, setSelectedPos] = useState(false);
+
   return (
     <GoogleMap 
       defaultZoom={10} 
-      defaultCenter={{ lat: 41.032730, lng: -73.766327 }}>
+      defaultCenter={{ lat: 41.032730, lng: -73.766327 }}
+      >
+      <Marker 
+        position={{
+          lat: 41.032730,
+          lng: -73.766327
+        }}
+        onClick={() => {
+          setSelectedPos(true)
+        }} 
+      />
+      {selectedPos && 
+      <InfoWindow 
+        position={{
+          lat: 41.032730,
+          lng: -73.766327
+        }}
+        onCloseClick={() => {
+          setSelectedPos(false)
+        }}
+      >
+          <div>
+            <h4>I'm living here!</h4>
+            <p>
+              <a 
+                href="https://www.google.com/maps/dir/?api=1&destination=White%20Plains" 
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Directions
+              </a>
+            </p>
+          </div>
+      </InfoWindow>}
     </GoogleMap>
   ); 
 }
@@ -30,4 +72,11 @@ export default function Map() {
 const MapWrapper = styled("div")`
   width: 100vw;
   height: 500px;
+  margin-bottom: 7em;
+  p{
+    margin-bottom: 0;
+  }
+  a{
+    cursor: pointer;
+  }
 `
