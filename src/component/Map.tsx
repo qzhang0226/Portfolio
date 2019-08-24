@@ -72,7 +72,7 @@ export default function Map() {
 const MapWrapper = styled("div")`
   width: 100vw;
   height: 500px;
-  margin-bottom: 7em;
+  margin: 0 0 100px 0;
   p{
     margin-bottom: 0;
   }
