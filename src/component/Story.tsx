@@ -24,7 +24,7 @@ export default function Story (props: ITextProps) {
     )
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
     background: ${(props: storyDivProps) => props.bgColor === "blue" ? "var(--mainBlue)" : "var(--mainWhite)"};
     height: auto;
     padding: 2.5em 0 2.5em 0;   

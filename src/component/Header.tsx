@@ -6,14 +6,12 @@ import { INameProps } from '../interfaces';
 export default function Header (props: INameProps) {
     return (
         <HeaderWrapper>
-            <Link to="/">
-                <p>{props.name}</p>
-            </Link>
+            <p><Link to="/">{props.name}</Link></p>
         </HeaderWrapper>
     );
 }
 
-const HeaderWrapper = styled("div")`
+const HeaderWrapper = styled("section")`
     font-size: 1.41em;
     font-style: normal;
     text-align: center;

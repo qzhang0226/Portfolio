@@ -49,7 +49,7 @@ export default function Experience (props: IAppProps) {
     )
 }
 
-const ExperienceWrapper = styled("div")`
+const ExperienceWrapper = styled("section")`
     background-color: var(--mainBlue);
     height: auto;
     .container{

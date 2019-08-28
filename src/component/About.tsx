@@ -37,7 +37,7 @@ export default function About (props: IAppProps) {
     );
 }
 
-const CardWrapper = styled("div")`
+const CardWrapper = styled("section")`
     .image_container{
         background-color: var(--mainDark);
         position: relative;

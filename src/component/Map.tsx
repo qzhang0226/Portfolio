@@ -69,8 +69,8 @@ export default function Map() {
   )
 }
 
-const MapWrapper = styled("div")`
-  width: 100vw;
+const MapWrapper = styled("section")`
+  width: 100%;
   height: 500px;
   margin: 0 0 100px 0;
   p{

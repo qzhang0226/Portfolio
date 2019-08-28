@@ -49,7 +49,7 @@ export default function Projects () {
 }
 
 
-const ProjectsWrapper = styled("div")`
+const ProjectsWrapper = styled("section")`
     background: var(--mainWhite);
     padding: 6.5em 0 6.5em 0;
     .carousel_image_container{

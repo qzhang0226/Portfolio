@@ -9,6 +9,7 @@ import Story from './component/Story';
 import Contact from './component/Contact';
 import Map from './component/Map';
 import Footer from './component/Footer';
+import * as Scroll from 'react-scroll';
 import './App.css';
 
 const App: React.FC = () => {
@@ -17,6 +18,12 @@ const App: React.FC = () => {
     bgColor: "blue",
     top: `"Do not go where the path may lead. Instead, go where there is no path and leave a trail"`, 
     bottom: "Ralph Waldo Emerson",
+  }
+
+  const scroll = Scroll.animateScroll;
+
+  const scrollToTop: any = () => {
+    scroll.scrollToTop();
   }
 
   return (
@@ -29,7 +36,8 @@ const App: React.FC = () => {
       <Story storyProps={storyProps} />
       <Contact />
       <Map />
-      <Footer name="2019 by Qi Zhang"/>
+      <button onClick={() => scrollToTop()}>back to top</button>
+      <Footer name="Qi Zhang"/>
       <Switch>
         <Route exact path="/"></Route>
       </Switch>
