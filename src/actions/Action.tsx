@@ -12,7 +12,15 @@ export const getBaseUrl = () => {
   }
 }
 
-
+export const fetchHomeData = async(dispatch: any) => {
+  const URL = `${getBaseUrl()}home`;
+  const data = await fetch(URL);
+  const dataJSON = await data.json();
+  return dispatch({
+    type: 'FETCH_HOME_DATA',
+    payload: dataJSON.home[0]
+  })
+}
 
 export const fetchAboutData = async(dispatch: any) => {
     const URL = `${getBaseUrl()}about`;

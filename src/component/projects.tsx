@@ -1,22 +1,17 @@
 import * as React from 'react';
 import { Store } from '../Store';
+import { IAppProps } from '../interfaces';
 import { fetchProjectData } from '../actions/Action';
 import styled from 'styled-components';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
-export default function Projects () {
+export default function Projects (props: IAppProps): JSX.Element {
 
-    const {state, dispatch} = React.useContext(Store);
-
-    React.useEffect(() => {
-        fetchProjectData(dispatch)
-    }, []);
-
-    const projects = state.project.data;
+    const data = props.data;
 
     return (
-        projects ?
+        data ?
         <ProjectsWrapper>
             <Carousel 
                 className="offset-1 col-10 offset-1" 
@@ -27,7 +22,7 @@ export default function Projects () {
                 showIndicators={false} 
                 showStatus={false} 
             >
-            {projects.map((item: any) => {
+            {data.projects.map((item: any) => {
                 return (
                     <div className="carousel_image_container" key={item._id}>
                         <img src={item.postImage} alt={item.title} />

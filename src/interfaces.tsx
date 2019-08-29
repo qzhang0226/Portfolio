@@ -1,4 +1,7 @@
+export type Dispatch = React.Dispatch<IAction>;
+
 export interface IState {
+    home: Object,
     about: Object,
     profile: Object,
     project: Object,
@@ -10,8 +13,12 @@ export interface IAction {
     payload: any
 }
 
-export interface IAppProps {
-    
+export interface IAppProps{
+    data: any,
+    store: {
+        state: IState,
+        dispatch: Dispatch
+    }
 }
 
 export interface ITextProps{

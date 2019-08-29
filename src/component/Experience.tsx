@@ -1,27 +1,18 @@
 import * as React from 'react';
 import { IAppProps } from '../interfaces';
-import { Store } from '../Store';
-import { fetchProfileData } from '../actions/Action';
 import styled from 'styled-components';
 
-export default function Experience (props: IAppProps) {
+export default function Experience (props: IAppProps): JSX.Element {
 
-    const {state, dispatch} = React.useContext(Store);
-
-    React.useEffect(() => {
-        fetchProfileData(dispatch)
-    }, [])
-  
-    const profile = state.profile.profile;
-    const experiences = state.profile.experiences;
+    const data = props.data;
 
     const experienceIcon = require('../assets/icons/profile-icon.PNG');
 
     return (
-        profile ?
+        data ?
         <ExperienceWrapper>  
             <div className="container">         
-                {profile.map((item: any) => {
+                {data.profile.map((item: any) => {
                     return (
                         <div className="profile_container" key={item._id}>
                             <img src={item.postImage} alt="my profile image"/>
@@ -30,7 +21,7 @@ export default function Experience (props: IAppProps) {
                         </div>
                     )
                 })}
-                {experiences.map((item: any) => {
+                {data.experiences.map((item: any) => {
                     return (
                         <div className="row" key={item._id}>
                             <div className="col-1"><img src={experienceIcon}/></div>

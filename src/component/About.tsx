@@ -1,18 +1,10 @@
 import * as React from 'react';
-import { Store } from '../Store';
-import { fetchAboutData } from '../actions/Action';
 import { IAppProps } from '../interfaces';
 import styled from 'styled-components';
 
-export default function About (props: IAppProps) {
+export default function About (props: IAppProps): JSX.Element {
 
-    const {state, dispatch} = React.useContext(Store);
-
-    React.useEffect(() => {
-        fetchAboutData(dispatch)
-    }, [])
-  
-    const aboutData = state.about[0];
+    const aboutData = props.data;
     
     return (
         aboutData ?
