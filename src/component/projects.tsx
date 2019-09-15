@@ -46,7 +46,7 @@ export default function Projects (props: IAppProps): JSX.Element {
 
 const ProjectsWrapper = styled("section")`
     background: var(--mainWhite);
-    padding: 6.5em 0 6.5em 0;
+    margin: 100px 0;
     .carousel_image_container{
         max-height: 650px;
         position: relative;

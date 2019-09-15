@@ -28,10 +28,9 @@ export default function Story (props: IAppProps) {
 }
 
 const Wrapper = styled.section`
-    /* background: ${(props: storyDivProps) => props.bgColor}; */
-    background: #E3F2F3;
+    background: ${(props: storyDivProps) => props.bgColor};
     height: auto;
-    padding: 2.5em 0 2.5em 0;   
+    padding: 100px 0;   
     font-size: 1.15em;
     .container{
         margin-top: 5em;

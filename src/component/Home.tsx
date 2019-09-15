@@ -17,7 +17,7 @@ export default function Home() {
         fetchHomeData(dispatch)
     }, []);
 
-    const [lastScrollTop, setLastScrollTop] = React.useState(0);
+    // const [lastScrollTop, setLastScrollTop] = React.useState(0);
 
     React.useEffect(() => {
         window.addEventListener('scroll', () => handleScroll());

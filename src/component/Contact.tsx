@@ -10,6 +10,7 @@ export default function Contact(props: IFormProps) {
         email: '',
         subject: '',
         message: '',
+        error: false,
     }
     const [formState, setFormState] = useState(initialState);
     const {state, dispatch} = React.useContext(Store);
@@ -20,7 +21,8 @@ export default function Contact(props: IFormProps) {
         const name = target.name;
         setFormState(inputs => ({
             ...inputs, 
-            [name]: value
+            [name]: value,
+            error: value.length === 0 ? false : true
         }));
     }
 
@@ -39,47 +41,69 @@ export default function Contact(props: IFormProps) {
     }
 
     const validateForm = () => {
-        return true;
+        if(!formState.error){
+            return false;
+        } else {
+            return true;
+        }
     }
 
     const { name, email, subject, message} = formState;
     return(
         state.message === "" ?
         <FormWrapper onSubmit={handleSubmit}>               
-            <div className="container offset-sm-2 col-sm-8 offset-sm-2">
+            <div className="container offset-md-2 col-md-8 offset-md-2 col-sm-12">
                 <div className="contact_header">GET IN TOUCH</div>
                 <div className="row oneRow_twoInput">
-                    <input 
-                        name="name" 
-                        type="text" 
-                        placeholder="Name"
-                        value={name} 
-                        onChange={handleChange} />                    
-                    <input 
-                        name="email" 
-                        type="text" 
-                        className="email_input"
-                        placeholder="Email"
-                        value={email} 
-                        onChange={handleChange} />
+                    <div className="col-sm-12">
+                        <input 
+                            name="name" 
+                            type="text" 
+                            placeholder="Name"
+                            value={name} 
+                            required
+                            onChange={handleChange} 
+                        />   
+                    </div>  
+                    <div className="col-sm-12">               
+                        <input 
+                            name="email" 
+                            type="text" 
+                            className="email_input"
+                            placeholder="Email"
+                            value={email} 
+                            required
+                            onChange={handleChange} 
+                        />
+                    </div>
                 </div>
                 <div className="row oneRow_input">
-                    <input 
-                    name="subject" 
-                    type="text"
-                    placeholder="Subject"
-                    value={subject} 
-                    onChange={handleChange} />
+                    <div className="col-sm-12">
+                        <input 
+                            name="subject" 
+                            type="text"
+                            placeholder="Subject"
+                            value={subject} 
+                            required
+                            onChange={handleChange} 
+                        />
+                    </div>
                 </div>
                 <div className="row">
-                    <textarea 
-                    name="message"
-                    value={message} 
-                    onChange={handleChange}
-                    placeholder="Type your message here..."/>
+                    <div className="col-sm-12">
+                        <textarea 
+                            name="message"
+                            value={message} 
+                            onChange={handleChange}
+                            required
+                            placeholder="Type your message here..."
+                        />
+                    </div>
                 </div>
                 <div className="row">
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <div className="col-sm-12">
+                        <button type="submit" className="btn btn-primary">Submit</button>
+                    </div>
                 </div>
             </div>
         </FormWrapper>
@@ -89,13 +113,15 @@ export default function Contact(props: IFormProps) {
 }
 
 const FormWrapper = styled("form")`
-    padding: 0 0 6.5em 0;
+    margin: 100px 0;
+    height: auto;
     .container{
-        position: relative;
-        height: 600px;
+        height: auto;
+    }
+    .col-sm-12{
+        margin-top: 15px;
     }
     textarea {
-        position: absolute;
         top: 282px;
         height: 255px;
         border-radius: 0;
@@ -118,7 +144,6 @@ const FormWrapper = styled("form")`
         font-weight: lighter;
     }
     input{
-        position: absolute;
         border-radius: 0;
         border-width: 0 0 1px 0;
         background-color: transparent;
@@ -129,9 +154,18 @@ const FormWrapper = styled("form")`
         margin: 0;
         text-overflow: ellipsis;
         flex: 1;
-        width: 45%;
+        width: 100%;
         text-align: left;
         height: 52px;
+    }
+    input:focus{
+        outline: none;
+    }
+    textarea:focus{
+        outline: none;
+    }
+    input:hover{
+        
     }
     .email_input{
         right: 0px;
@@ -141,7 +175,6 @@ const FormWrapper = styled("form")`
         width: 100%;
     }
     button{
-        position: absolute;
         height: 50px;
         top: 566px;
         width: 100%;
@@ -154,11 +187,14 @@ const FormWrapper = styled("form")`
         background-color: rgba(0, 0, 0, 0.6); 
         border-color: rgba(0, 0, 0, 1);
     }
-    @media only screen and (max-width: 575px) {
-        padding: 0 30px;
+    .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled):active:focus{
+        box-shadow: none;
+    }
+    .btn-primary:not(:disabled):not(.disabled):active{
+        background-color: rgba(0,0,0,0.2);
+        border-color: rgba(0,0,0,0);
     }
 `
-
 const ThankUWrapper = styled("div")`
     height: 300px;
     text-align: center;

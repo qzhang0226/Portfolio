@@ -30,6 +30,7 @@ export default function About (props: IAppProps): JSX.Element {
 }
 
 const CardWrapper = styled("section")`
+    margin-bottom: 100px;
     .image_container{
         background-color: var(--mainDark);
         position: relative;
@@ -50,6 +51,7 @@ const CardWrapper = styled("section")`
         transform: translate(-50%, -50%);
     }
     .container{
+        margin-top: 100px;
         height: auto;
     }
     .header_content{
