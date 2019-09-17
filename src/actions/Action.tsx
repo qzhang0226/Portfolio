@@ -65,7 +65,7 @@ export const submitForm = async(formObj: object, dispatch: any) => {
   try{
     const URL = `${getBaseUrl()}contact`;
     const data = await fetch(URL, settings);
-    const dataJSON = await data.json();
+    await data.json();
     return dispatch({
       type: 'POST_FORM_DATA',
       payload: "Thanks for submitting!"

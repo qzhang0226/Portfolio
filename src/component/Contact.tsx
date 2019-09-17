@@ -15,6 +15,13 @@ export default function Contact(props: IFormProps) {
     const [formState, setFormState] = useState(initialState);
     const {state, dispatch} = React.useContext(Store);
 
+    const validEmailInputChars = (e: any) => {
+        const allowedChars = /[0-9a-zA-Z-,.@_-]+/g;
+        if (!allowedChars.test(e.key)) {
+          e.preventDefault();
+        }
+    }
+
     const handleChange = (e: any) => {
         const target = e.target;
         const value = target.value;
@@ -24,11 +31,16 @@ export default function Contact(props: IFormProps) {
             [name]: value,
             error: value.length === 0 ? false : true
         }));
+        var email: any = document.getElementById("email");
+        if(!email.value.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)){
+            email.setCustomValidity("Please enter a valid E-mail address!");
+        } else {
+            email.setCustomValidity("")
+        }
     }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
-
         if(validateForm()){
             const postObj = {
                 name: formState.name,
@@ -63,17 +75,19 @@ export default function Contact(props: IFormProps) {
                             value={name} 
                             required
                             onChange={handleChange} 
-                        />   
+                        />  
                     </div>  
                     <div className="col-sm-12">               
                         <input 
+                            id="email"
                             name="email" 
-                            type="text" 
+                            type="email" 
                             className="email_input"
                             placeholder="Email"
                             value={email} 
                             required
                             onChange={handleChange} 
+                            onKeyPress={(e: any) => validEmailInputChars(e)}
                         />
                     </div>
                 </div>

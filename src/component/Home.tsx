@@ -15,13 +15,10 @@ export default function Home() {
     const {state, dispatch} = React.useContext(Store);
     React.useEffect(() => {
         fetchHomeData(dispatch)
-    }, []);
-
-    // const [lastScrollTop, setLastScrollTop] = React.useState(0);
+    }, [dispatch]);
 
     React.useEffect(() => {
-        window.addEventListener('scroll', () => handleScroll());
-      
+        window.addEventListener('scroll', () => handleScroll());    
         return () => {
           window.removeEventListener('scroll', () => handleScroll())
         }

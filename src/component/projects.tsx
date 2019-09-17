@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { Store } from '../Store';
 import { IAppProps } from '../interfaces';
-import { fetchProjectData } from '../actions/Action';
 import styled from 'styled-components';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';

@@ -8,8 +8,6 @@ export default function Experience (props: IAppProps): JSX.Element {
 
     const experienceIcon = require('../assets/icons/profile-icon.PNG');
 
-    console.log(data)
-
     return (
         data ?
         <ExperienceWrapper>  
@@ -17,7 +15,7 @@ export default function Experience (props: IAppProps): JSX.Element {
                 {data.profile.map((item: any) => {
                     return (
                         <div className="profile_container" key={item._id}>
-                            <img src={item.postImage} alt="my profile image"/>
+                            <img src={item.postImage} alt="my profile"/>
                             <div className="profile_title">{item.title}</div>
                             <div className="profile_subtitle">{item.subTitle}</div>
                         </div>
@@ -26,7 +24,7 @@ export default function Experience (props: IAppProps): JSX.Element {
                 {data.experiences.map((item: any) => {
                     return (
                         <div className="row" key={item._id}>
-                            <div className="col-1"><img src={experienceIcon}/></div>
+                            <div className="col-1"><img src={experienceIcon} alt="experience icon"/></div>
                             <div className="col-md-3 col-sm-12 col-xs-12">
                                 <div className=""><strong>{item.title}</strong></div>
                                 <div className="">{item.duration}</div>
@@ -34,10 +32,10 @@ export default function Experience (props: IAppProps): JSX.Element {
                             <div className="col-md-8 col-sm-12 col-xs-12">
                                 {item.description.map((project: any) => {
                                     return (                             
-                                        <div className="text-left mb-4">
+                                        <div className="text-left mb-4" key={project.projectName}>
                                             <div className="mb-2"><strong>{project.projectName}</strong></div>
                                             {project.responsibilities.map((duty: any) => {
-                                                return (<div>-- {duty}</div>)
+                                                return (<div key={duty}>-- {duty}</div>)
                                             })}
                                         </div>
                                     )  

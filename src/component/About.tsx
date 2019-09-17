@@ -10,7 +10,7 @@ export default function About (props: IAppProps): JSX.Element {
         aboutData ?
         <CardWrapper> 
             <div className="image_container">
-                <img src={aboutData.postImage} alt="about image" />
+                <img src={aboutData.postImage} alt="about" />
                 <div className="img_content"><h1>{aboutData.title}</h1></div>
             </div>           
             <div className="container">
