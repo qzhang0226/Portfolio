@@ -1,4 +1,3 @@
-
 export const getBaseUrl = () => {
   switch (process.env.REACT_APP_DEV_ENV) {
     case "0":
@@ -73,4 +72,14 @@ export const submitForm = async(formObj: object, dispatch: any) => {
   } catch(err) {
     return err;
   }
+}
+
+export const fetchProjectDetails = async(projectId: string, dispatch: any) => {
+  const URL = `${getBaseUrl()}project/${projectId}`;
+  const data = await fetch(URL);
+  const dataJSON = await data.json();
+  return dispatch({
+    type: 'FETCH_PROJECT_DETAILS_DATA',
+    payload: dataJSON
+  })
 }

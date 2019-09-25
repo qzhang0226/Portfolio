@@ -3,10 +3,18 @@ import { IAppProps } from '../interfaces';
 import styled from 'styled-components';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+import { Link } from 'react-router-dom';
+import { fetchProjectDetails } from '../actions/Action';
+import { Store } from '../Store'; 
 
 export default function Projects (props: IAppProps): JSX.Element {
 
     const data = props.data;
+
+    const handleProjectClick = (id: string) => {
+        // const {state, dispatch} = React.useContext(Store);
+        // fetchProjectDetails(id);
+    }
 
     return (
         data ?
@@ -22,15 +30,15 @@ export default function Projects (props: IAppProps): JSX.Element {
             >
             {data.projects.map((item: any) => {
                 return (
-                    <div className="carousel_image_container" key={item._id}>
-                        <img src={item.postImage} alt={item.title} />
-                        <div className="overlay"></div>
-                        <div className="project_description">
-                            <div className="project_title">{item.title}</div>
-                            <p>{item.description}</p>
-                            <div></div>
-                            <div></div>
-                        </div>  
+                    <div className="carousel_image_container" key={item._id} onClick={() => handleProjectClick(item._id)}>   
+                        <Link to={`project`}>                  
+                            <img src={item.postImage} alt={item.title} />
+                            <div className="overlay"></div>
+                            <div className="project_description">
+                                <div className="project_title">{item.title}</div>
+                                <p>{item.description}</p>
+                            </div>  
+                        </Link>
                     </div>
                 )
             })}
@@ -65,7 +73,7 @@ const ProjectsWrapper = styled("section")`
         background-color: #FFFFFF;
     }
     .carousel_image_container:hover .overlay{
-        opacity: 0.7;
+        opacity: 0.8;
     }
     .project_description{
         opacity: 0;
@@ -73,8 +81,10 @@ const ProjectsWrapper = styled("section")`
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        cursor: pointer;
     }
     .carousel_image_container:hover .project_description{
+        font-weight: 500;
         opacity: 1;
     }
     .project_title{
