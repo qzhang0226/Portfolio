@@ -90,8 +90,14 @@ const ProjectsWrapper = styled("section")`
     }
     @media only screen and (max-width: 480px) {
         padding: 2.5em 0 2.5em 0;
+        .project_description{
+            overflow: scroll;
+        }
     }
     @media (min-width: 481px) and (max-width: 768px) {
         padding: 4.5em 0 4.5em 0;
+        .project_description{
+            overflow: scroll;
+        }
     }
 `;
