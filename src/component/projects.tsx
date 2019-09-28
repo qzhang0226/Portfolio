@@ -4,16 +4,13 @@ import styled from 'styled-components';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import { Link } from 'react-router-dom';
-import { fetchProjectDetails } from '../actions/Action';
-import { Store } from '../Store'; 
 
 export default function Projects (props: IAppProps): JSX.Element {
 
     const data = props.data;
 
-    const handleProjectClick = (id: string) => {
-        // const {state, dispatch} = React.useContext(Store);
-        // fetchProjectDetails(id);
+    const handleProjectClick = (name: string) => {
+        sessionStorage.setItem('projectName', name);
     }
 
     return (
@@ -30,8 +27,8 @@ export default function Projects (props: IAppProps): JSX.Element {
             >
             {data.projects.map((item: any) => {
                 return (
-                    <div className="carousel_image_container" key={item._id} onClick={() => handleProjectClick(item._id)}>   
-                        <Link to={`project`}>                  
+                    <div className="carousel_image_container" key={item._id} onClick={() => handleProjectClick(item.name)}>   
+                        <Link to={`project/${item.name}`}>                  
                             <img src={item.postImage} alt={item.title} />
                             <div className="overlay"></div>
                             <div className="project_description">

@@ -6,7 +6,7 @@ const initialState: IState = {
     about: Object,
     profile: Object,
     project: Object,
-    details: Object,
+    projectDetails: Object,
     message: "",
 };
 
@@ -26,7 +26,7 @@ function reducer(state: IState, action: IAction): IState {
         case 'POST_FORM_DATA':
             return {...state, message: action.payload};
         case 'FETCH_PROJECT_DETAILS_DATA':
-            return {...state, details: action.payload};
+            return {...state, projectDetails: action.payload};
         default:
             return state;
     }

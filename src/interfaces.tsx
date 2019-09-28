@@ -5,7 +5,7 @@ export interface IState {
     about: Object,
     profile: Object,
     project: Object,
-    details: Object,
+    projectDetails: Object,
     message: string,
 }
 

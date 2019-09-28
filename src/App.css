@@ -9,6 +9,11 @@ body{
   font-family: 'Cardo', serif;
 }
 
+/* #page_container{
+  position: relative;
+  min-height: 95vh;
+} */
+
 a{
   color: var(--mainDark);
 }

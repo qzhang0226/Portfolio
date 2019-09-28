@@ -22,7 +22,8 @@ export default function Home() {
         return () => {
           window.removeEventListener('scroll', () => handleScroll())
         }
-      }, [])
+      }, []
+    )
 
     const handleScroll = () => {
         const myElement: HTMLElement | null = document.getElementById('back_to_top_icon');
@@ -33,7 +34,6 @@ export default function Home() {
                 myElement.style.right = "-100px";
             }
         }
-
     }
 
     const aboutProps: IAppProps = {
