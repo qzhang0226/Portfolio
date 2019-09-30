@@ -14,7 +14,7 @@ ReactDOM.render(
             <Switch>
                 <App path='/'>
                     <Route exact path="/" component={Home}/>
-                    <Route path="/project/:slug" component={ProjectDetails}/>
+                    {/* <Route path="/project/:slug" component={ProjectDetails}/> */}
                 </App>
             </Switch>
         </BrowserRouter>

@@ -28,14 +28,14 @@ export default function Projects (props: IAppProps): JSX.Element {
             {data.projects.map((item: any) => {
                 return (
                     <div className="carousel_image_container" key={item._id} onClick={() => handleProjectClick(item.name)}>   
-                        <Link to={`project/${item.name}`}>                  
+                        {/* <Link to={`project/${item.name}`}>                   */}
                             <img src={item.postImage} alt={item.title} />
                             <div className="overlay"></div>
                             <div className="project_description">
                                 <div className="project_title">{item.title}</div>
                                 <p>{item.description}</p>
                             </div>  
-                        </Link>
+                        {/* </Link> */}
                     </div>
                 )
             })}
