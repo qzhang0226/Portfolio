@@ -10,6 +10,8 @@ import Contact from './Contact';
 import Map from './Map';
 import * as Scroll from 'react-scroll';
 import styled from 'styled-components';
+import NavBar from './NavBar';
+import Footer from './Footer';
 
 export default function Home() {
     const {state, dispatch} = React.useContext(Store);
@@ -65,6 +67,7 @@ export default function Home() {
     return (
         <HomeWrapper>
             <React.Suspense fallback={<div>loading...</div>}>
+                <NavBar name="QI ZHANG"/>
                 <About {...aboutProps}/>
                 <Experience {...experienceProps}/>
                 <Projects {...projectProps}/>
@@ -76,6 +79,7 @@ export default function Home() {
                     id="back_to_top_icon" 
                     onClick={() => scrollToTop()} 
                 />
+                <Footer name="Qi Zhang"/>
             </React.Suspense>
         </HomeWrapper>
     )

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { fetchProjectDetails } from '../actions/Action';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import "../styles/projectDetails.css";
+// import "../styles/projectDetails.css";
 
 export default function ProjectDetails() {
 
