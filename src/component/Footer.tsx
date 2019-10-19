@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 export default function Footer (props: INameProps) {
     return (
-        <FooterWrapper>
+        <FooterWrapper id="footer">
             <p>Copyright</p>
             {"  "}
             <i className="fa fa-copyright fa-spin" aria-hidden="true" />
