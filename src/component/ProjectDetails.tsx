@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { fetchProjectDetails } from '../actions/Action';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-// import "../styles/projectDetails.css";
 
 export default function ProjectDetails() {
 
@@ -44,7 +43,7 @@ export default function ProjectDetails() {
                                         </div>
                                     )
                                 })}
-                                <iframe src="https://www.youtube.com/embed/9w2RHtQ4jVI" allowFullScreen/>
+                                <iframe src="https://www.youtube.com/embed/9w2RHtQ4jVI" allowFullScreen><img src={require("../assets/images/youtube.png")}/></iframe>
                             </Carousel>
                         </div>
                         <div className="col-md-4 col-xs-12">
@@ -93,6 +92,17 @@ const CarouselWrapper = styled("section")`
     iframe{
         width: 560px; 
         height: 100%;
+    }
+    .thumbs-wrapper{
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    .thumbs-wrapper .thumbs{
+        transform: translate3d(0px, 0px, 0px) !important;
+    }
+    .thumbs-wrapper .animated{
+        transform: translate3d(0px, 0px, 0px) !important;
+        padding-left: 0 !important;
     }
     @media (min-width: 1200px){
         .container {
