@@ -19,7 +19,7 @@ export default function ProjectDetails() {
     }
 
     const projectDetails = state.projectDetails._id ? state.projectDetails : undefined;
-    
+
     return (
         projectDetails ?
         <DetailsWrapper>
@@ -43,7 +43,7 @@ export default function ProjectDetails() {
                                         </div>
                                     )
                                 })}
-                                <iframe src="https://www.youtube.com/embed/9w2RHtQ4jVI" allowFullScreen><img src={require("../assets/images/youtube.png")}/></iframe>
+                                <iframe src={projectDetails.youtubeUrl} allowFullScreen><img src={projectDetails.youtubeImg}/></iframe>
                             </Carousel>
                         </div>
                         <div className="col-md-4 col-xs-12">
@@ -67,6 +67,7 @@ const DetailsWrapper = styled("section")`
 const CarouselWrapper = styled("section")`
     .container{
         text-align: left;
+        margin: 0 0 100px 0;
     }  
     .topRow{
         padding-top: 4em;
