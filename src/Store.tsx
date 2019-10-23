@@ -7,6 +7,7 @@ const initialState: IState = {
     profile: Object,
     project: Object,
     projectDetails: Object,
+    blog: Object,
     message: "",
 };
 
@@ -17,16 +18,16 @@ function reducer(state: IState, action: IAction): IState {
     switch (action.type) {
         case 'FETCH_HOME_DATA':
             return {...state, home: action.payload};
-        case 'FETCH_ABOUT_DATA':
-            return {...state, about: action.payload};
-        case 'FETCH_PROFILE_DATA':
-            return {...state, profile: action.payload};
-        case 'FETCH_PROJECT_DATA':
-            return {...state, project: action.payload};
-        case 'POST_FORM_DATA':
-            return {...state, message: action.payload};
-        case 'FETCH_PROJECT_DETAILS_DATA':
-            return {...state, projectDetails: action.payload};
+        // case 'FETCH_ABOUT_DATA':
+        //     return {...state, about: action.payload};
+        // case 'FETCH_PROFILE_DATA':
+        //     return {...state, profile: action.payload};
+        // case 'FETCH_PROJECT_DATA':
+        //     return {...state, project: action.payload};
+        // case 'POST_FORM_DATA':
+        //     return {...state, message: action.payload};
+        // case 'FETCH_PROJECT_DETAILS_DATA':
+        //     return {...state, projectDetails: action.payload};
         default:
             return state;
     }

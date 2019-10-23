@@ -12,6 +12,7 @@ import * as Scroll from 'react-scroll';
 import styled from 'styled-components';
 import NavBar from './NavBar';
 import Footer from './Footer';
+import Blogs from './Blogs';
 
 export default function Home() {
     const {state, dispatch} = React.useContext(Store);
@@ -58,6 +59,11 @@ export default function Home() {
         store: {state, dispatch},
     }
 
+    const blogProps: IAppProps = {
+        data: state.home.blog,
+        store: {state, dispatch},
+    }
+
     const scroll = Scroll.animateScroll;
 
     const scrollToTop: any = () => {
@@ -74,6 +80,7 @@ export default function Home() {
                 <Story {...storyProps}/>
                 <Contact />
                 <Map />
+                <Blogs {...blogProps}/>
                 <i 
                     className="fas fa-angle-double-up" 
                     id="back_to_top_icon" 

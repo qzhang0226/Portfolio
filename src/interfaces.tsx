@@ -6,6 +6,7 @@ export interface IState {
     profile: Object,
     project: Object,
     projectDetails: Object,
+    blog: Object,
     message: string,
 }
 

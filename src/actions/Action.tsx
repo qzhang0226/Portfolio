@@ -17,7 +17,7 @@ export const fetchHomeData = async(dispatch: any) => {
   const dataJSON = await data.json();
   return dispatch({
     type: 'FETCH_HOME_DATA',
-    payload: dataJSON.home[0]
+    payload: dataJSON
   })
 }
 
