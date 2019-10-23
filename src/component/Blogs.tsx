@@ -43,6 +43,12 @@ const BlogsWrapper = styled("section")`
             opacity: 1;
             transition: all 0.5s ease-in-out;
         }
+        &:hover h3{
+            background-image: linear-gradient(#FFDC00, #FF851B, #7FDBFF, #85144b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 1s ease-in-out;
+        }
     };
     img{
         object-fit: cover;
@@ -62,12 +68,13 @@ const BlogsWrapper = styled("section")`
         font-size: 2em;
         text-shadow: 0 2px 4px rgba(0,0,0,0.50);
         text-transform: uppercase;
-        /* color: #39CCCC; */
+        color: var(--mainWhite);
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
         z-index: 5;
+        transition: all 1s ease-in-out;
         /* this makes a rainbow text */
         /* background-image: linear-gradient(red, orange, yellow, green, blue);
         -webkit-background-clip: text;
