@@ -19,9 +19,9 @@ export default function Blogs (props: IAppProps): JSX.Element {
                 <div className="row">
                     {blogData.blogs.map((blog: any) => {
                         return (
-                            <div className="col-md-4 col-sm-6 col-xs-12" key={blog.name} onClick={(e: any) => handleClick(e)}>
-                                <img src={blog.postImage} alt={blog.name}/>
+                            <div className="col-md-4 col-sm-6 col-xs-12" key={blog.name} onClick={(e: any) => handleClick(e)}>                           
                                 <div className="blogCard">
+                                    <img src={blog.postImage} alt={blog.name}/>
                                     <h3>{blog.name}</h3>
                                 </div>
                             </div>
@@ -38,32 +38,39 @@ export default function Blogs (props: IAppProps): JSX.Element {
 const BlogsWrapper = styled("section")`
     [class*=col-]{ 
         margin: 0 0 20px 0;
+        &:hover img{
+            filter: none;
+            opacity: 1;
+            transition: all 0.5s ease-in-out;
+        }
     };
     img{
         object-fit: cover;
         width: 100%;
-        height: auto;
+        height: 100%;
         filter: grayscale(80%);
         opacity: .9;
-        &:hover{
-            filter: none;
-            opacity: 1;
-        }
+        transition: all 0.5s ease-in-out;
     }
     .blogCard{
-        font-weight: 900;
-        font-size: 28px;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.50);
-        text-transform: uppercase;
-        border: 1px solid #000000;
+
         height: 250px;
         cursor: pointer;
     };
     h3{
-        color: var(--mainWhite);
+        font-weight: 900;
+        font-size: 2em;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.50);
+        text-transform: uppercase;
+        /* color: #39CCCC; */
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%,-50%)
+        transform: translate(-50%,-50%);
+        z-index: 5;
+        /* this makes a rainbow text */
+        /* background-image: linear-gradient(red, orange, yellow, green, blue);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent; */
     }
 `
