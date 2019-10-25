@@ -16,30 +16,34 @@ export default function Projects (props: IAppProps): JSX.Element {
     return (
         data ?
         <ProjectsWrapper>
-            <Carousel 
-                className="offset-1 col-10 offset-1" 
-                autoPlay 
-                useKeyboardArrows 
-                infiniteLoop
-                showThumbs={false} 
-                showIndicators={false} 
-                showStatus={false} 
-            >
-            {data.projects.map((item: any) => {
-                return (
-                    <div className="carousel_image_container" key={item._id} onClick={() => handleProjectClick(item.name)}>   
-                        <Link to={`project/${item.name}`}>                  
-                            <img src={item.postImage} alt={item.title} />
-                            <div className="overlay"></div>
-                            <div className="project_description">
-                                <div className="project_title">{item.title}</div>
-                                <p>{item.description}</p>
-                            </div>  
-                        </Link>
-                    </div>
-                )
-            })}
-            </Carousel>
+            <div className="row">
+                <div className="col-12 projectHeader">MY PROJECTS</div>
+                <div className="col-12">
+                    <Carousel 
+                        autoPlay 
+                        useKeyboardArrows 
+                        infiniteLoop
+                        showThumbs={false} 
+                        showIndicators={false} 
+                        showStatus={false} 
+                    >
+                    {data.projects.map((item: any) => {
+                        return (
+                            <div className="carousel_image_container" key={item._id} onClick={() => handleProjectClick(item.name)}>   
+                                <Link to={`project/${item.name}`}>                  
+                                    <img src={item.postImage} alt={item.title} />
+                                    <div className="overlay"></div>
+                                    <div className="project_description">
+                                        <div className="project_title">{item.title}</div>
+                                        <p>{item.description}</p>
+                                    </div>  
+                                </Link>
+                            </div>
+                        )
+                    })}
+                    </Carousel>
+                </div>
+            </div>
         </ProjectsWrapper>
         :
         <React.Suspense fallback={<div>loading...</div>}></React.Suspense>
@@ -48,8 +52,14 @@ export default function Projects (props: IAppProps): JSX.Element {
 
 
 const ProjectsWrapper = styled("section")`
+    padding: 0 100px;
     background: var(--mainWhite);
     margin: 100px 0;
+    .projectHeader{
+        text-align: center;
+        font-size: 2.5em;
+        padding-bottom: 50px;
+    }
     .carousel_image_container{
         max-height: 650px;
         position: relative;
@@ -89,13 +99,13 @@ const ProjectsWrapper = styled("section")`
         padding-bottom: 2em;
     }
     @media only screen and (max-width: 480px) {
-        padding: 2.5em 0 2.5em 0;
+        padding: 0px 15px;
         .project_description{
             overflow: scroll;
         }
     }
     @media (min-width: 481px) and (max-width: 768px) {
-        padding: 4.5em 0 4.5em 0;
+        padding: 0px 15px;
         .project_description{
             overflow: scroll;
         }

@@ -63,7 +63,7 @@ const ExperienceWrapper = styled("section")`
         height: 200px;
     }
     .profile_title{
-         font-size: 2.6em;
+         font-size: 2.5em;
          padding-top: 30px;
     }
     .profile_subtitle{

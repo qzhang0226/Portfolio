@@ -24,7 +24,7 @@ export default function ProjectDetails() {
         projectDetails ?
         <DetailsWrapper>
             <CarouselWrapper>
-                <div className="container">
+                {/* <div className=""> */}
                     <div className="topRow">
                         <img className="closeImg" src={require("../assets/icons/cross-img.PNG")} alt="close" onClick={() => handleClick()}/>
                     </div>
@@ -52,7 +52,7 @@ export default function ProjectDetails() {
                             <div><span className="lableName">Description:</span> {projectDetails.description}</div>
                         </div>
                     </div>
-                </div>
+                {/* </div> */}
             </CarouselWrapper>
 
         </DetailsWrapper>
@@ -65,10 +65,22 @@ const DetailsWrapper = styled("section")`
 
 `
 const CarouselWrapper = styled("section")`
-    .container{
-        text-align: left;
-        margin: 0 0 100px 0;
-    }  
+    text-align: left;
+    padding: 0 100px;
+    @media only screen and (max-width: 480px) {
+        padding: 0 15px;
+        .topRow{
+            padding-top: 2em !important;
+            height: 6em !important;
+        }
+    }
+    @media (min-width: 481px) and (max-width: 768px) {
+        padding: 0 15px;
+        .topRow{
+            padding-top: 2em;
+            height: 6em;
+        }
+    }
     .topRow{
         padding-top: 4em;
         height: 10em;
@@ -106,8 +118,8 @@ const CarouselWrapper = styled("section")`
         padding-left: 0 !important;
     }
     @media (min-width: 1200px){
-        .container {
+        /* .container {
             max-width: 1500px;
-        }
+        } */
     }
 `
