@@ -33,7 +33,6 @@ const CardWrapper = styled("section")`
     margin-bottom: 100px;
     .image_container{
         background-color: var(--mainDark);
-        position: relative;
         text-align: center;
         max-height: 650px;
         overflow: hidden;
