@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import { StoreProvider } from './Store';
 import Home from './component/Home';
 import ProjectDetails from './component/ProjectDetails';
+import BlogList from './component/Blog/BlogList';
 
 ReactDOM.render( 
     <StoreProvider>
@@ -15,6 +16,7 @@ ReactDOM.render(
                 <App path='/'>
                     <Route exact path="/" component={Home}/>
                     <Route path="/project/:slug" component={ProjectDetails}/>
+                    <Route path="/blog/:slug" component={BlogList}/>
                 </App>
             </Switch>
         </BrowserRouter>

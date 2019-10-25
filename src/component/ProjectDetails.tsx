@@ -43,7 +43,7 @@ export default function ProjectDetails() {
                                         </div>
                                     )
                                 })}
-                                <iframe src={projectDetails.youtubeUrl} allowFullScreen><img src={projectDetails.youtubeImg}/></iframe>
+                                <iframe src={projectDetails.youtubeUrl} title={projectDetails.name} allowFullScreen><img src={projectDetails.youtubeImg} alt={`${projectDetails.name} youtube screenshot`} /></iframe>
                             </Carousel>
                         </div>
                         <div className="col-md-4 col-xs-12">
