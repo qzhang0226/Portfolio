@@ -2,7 +2,7 @@ import React from 'react';
 import { IAppProps } from '../interfaces';
 import styled from 'styled-components';
 
-interface storyDivProps {
+interface StoryDivProps {
     bgColor: string;
 }
 
@@ -28,7 +28,7 @@ export default function Story (props: IAppProps) {
 }
 
 const Wrapper = styled.section`
-    background: ${(props: storyDivProps) => props.bgColor};
+    background: ${(props: StoryDivProps) => props.bgColor};
     height: auto;
     padding: 100px 0;   
     font-size: 1.15em;

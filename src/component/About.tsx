@@ -36,6 +36,7 @@ const CardWrapper = styled("section")`
         text-align: center;
         max-height: 650px;
         overflow: hidden;
+        position: relative;
     }
     img{
         opacity: .9;

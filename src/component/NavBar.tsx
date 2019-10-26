@@ -1,9 +1,21 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
-import { INameProps } from '../interfaces';
+import { INameProps, IFormState } from '../interfaces';
+
+interface WrapperProps {
+  className: string;
+}
 
 export default function NavBar (props: INameProps) {
+
+  const initialState: IFormState = {
+    wrapper: "wrapper",
+    headerWrapper: "headerWrapper",
+    navWrapper: "navWrapper,"
+  }
+
+  const [scrollState, setScrollState] = React.useState(initialState);
 
   React.useEffect(() => {
     window.addEventListener('scroll', () => handleScroll());    
@@ -13,25 +25,24 @@ export default function NavBar (props: INameProps) {
   }, []);
 
   const handleScroll = () => {
-    const myHeaderElement: HTMLElement | null = document.getElementById('headerWrapper');
-    const myWrapperElement: HTMLElement | null = document.getElementById('wrapper');
-    const myNavElement: HTMLElement | null = document.getElementById('navWrapper');
-    if(myWrapperElement && myHeaderElement && myNavElement){
-        if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
-            myHeaderElement.style.marginTop = "1em";
-            myNavElement.style.marginBottom = "1em";
-            myWrapperElement.style.boxShadow = "0px 0px 3px darkgrey";
-        } else {
-            myHeaderElement.style.marginTop = "2.5em";
-            myNavElement.style.marginBottom = "2.5em";
-            myWrapperElement.style.boxShadow = "none";
-        }
+    if(document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+      setScrollState({
+        wrapper: "scrolledWrapper",
+        headerWrapper: "scrolledHeaderWrapper",
+        navWrapper: "scrolledNavWrapper,"
+      });
+    } else {
+      setScrollState({
+        wrapper: "wrapper",
+        headerWrapper: "headerWrapper",
+        navWrapper: "navWrapper,"
+      });
     }
-}
+  }
   
   return (
-    <Wrapper id="wrapper">        
-      <HeaderWrapper id="headerWrapper">
+    <Wrapper className={scrollState.wrapper}>        
+      <HeaderWrapper className={scrollState.headerWrapper}>
         <p><Link to="/">{props.name}</Link></p>
       </HeaderWrapper>
       <NavWrapper id="navWrapper" className="navbar navbar-expand-lg px-sm-5">
@@ -49,10 +60,13 @@ export default function NavBar (props: INameProps) {
 }
 
 const Wrapper = styled("section")`
+  height: ${(props: WrapperProps) => props.className === "scrolledWrapper" ? "140px" : " 180px"};
+  box-shadow:  ${(props: WrapperProps) => props.className === "scrolledWrapper" && "0px 0px 3px 0px darkgrey"};
   background: var(--mainWhite);
   overflow: hidden;
-  transition: all 0.4s ease-in-out;
-  position: fixed;
+  transition: all 0.3s ease-in-out;
+  position: sticky;
+  position: -webkit-sticky;
   width: 100%;
   top: 0;
   z-index: 99;
@@ -61,13 +75,12 @@ const HeaderWrapper = styled("div")`
     font-size: 1.41em;
     font-style: normal;
     text-align: center;
-    margin-top: 2.5em;
+    margin-top: ${(props: WrapperProps) => props.className === "scrolledHeaderWrapper" ? "1.5em" : " 2.5em"};
     word-spacing: 0;
     transition: all 0.4s ease-in-out;
 `
 const NavWrapper = styled("nav")`
   font-weight: 300;
-  margin-bottom: 2.5em;
   .navbar-nav{
     margin: 0 auto;
   }

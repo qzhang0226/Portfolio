@@ -8,7 +8,7 @@ import { Carousel } from 'react-responsive-carousel';
 export default function ProjectDetails() {
 
     const {state, dispatch} = React.useContext(Store);
-    const name: any = sessionStorage.getItem('projectName');
+    const name: any = localStorage.getItem('projectName');
 
     React.useEffect(() => {
         fetchProjectDetails(name, dispatch)

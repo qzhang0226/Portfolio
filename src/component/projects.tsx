@@ -10,7 +10,7 @@ export default function Projects (props: IAppProps): JSX.Element {
     const data = props.data;
 
     const handleProjectClick = (name: string) => {
-        sessionStorage.setItem('projectName', name);
+        localStorage.setItem('projectName', name);
     }
 
     return (

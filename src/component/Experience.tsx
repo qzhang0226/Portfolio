@@ -35,7 +35,7 @@ export default function Experience (props: IAppProps): JSX.Element {
                                         <div className="text-left mb-4" key={project.projectName}>
                                             <div className="mb-2"><strong>{project.projectName}</strong></div>
                                             {project.responsibilities.map((duty: any) => {
-                                                return (<div key={duty}>-- {duty}</div>)
+                                                return (<div key={duty}>&#8226; {duty}</div>)
                                             })}
                                         </div>
                                     )  

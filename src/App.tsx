@@ -1,14 +1,23 @@
 import React from 'react';
-// import NavBar from './component/NavBar';
-// import Footer from './component/Footer';
+// import {ThemeProvider, createGlobalStyle} from 'styled-components';
 import './App.css';
+
+// const GlobalStyle = createGlobalStyle`
+//   body{
+//     background-color: ${(props: any) => props.theme.mode === "dark" ? "#111" : "#EEE"};
+//     color: ${(props: any) => props.theme.mode === "dark" ? "#EEE" : "#111"}
+//   }
+// `
 
 export default function App(props: any): JSX.Element {
   return (
-    <React.Fragment>
-      {/* <NavBar name="QI ZHANG"/> */}
-      {props.children}
-      {/* <Footer name="Qi Zhang"/> */}
-    </React.Fragment>
+    // <ThemeProvider theme={{ mode: "dark"}}>
+      <>
+        {/* <GlobalStyle /> */}
+        <React.Fragment>
+          {props.children}
+        </React.Fragment>
+      </>
+    // </ThemeProvider>
   );
 }
