@@ -7,14 +7,13 @@ import { Link } from 'react-router-dom';
 
 export default function Projects (props: IAppProps): JSX.Element {
 
-    const data = props.data;
+    const { data } = props;
 
     const handleProjectClick = (name: string) => {
         localStorage.setItem('projectName', name);
     }
 
     return (
-        data ?
         <ProjectsWrapper>
             <div className="row">
                 <div className="col-12 projectHeader">MY PROJECTS</div>
@@ -45,8 +44,6 @@ export default function Projects (props: IAppProps): JSX.Element {
                 </div>
             </div>
         </ProjectsWrapper>
-        :
-        <React.Suspense fallback={<div>loading...</div>}></React.Suspense>
     )
 }
 

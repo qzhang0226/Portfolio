@@ -4,12 +4,11 @@ import styled from 'styled-components';
 
 export default function Experience (props: IAppProps): JSX.Element {
 
-    const data = props.data;
+    const { data } = props;
 
     const experienceIcon = require('../assets/icons/profile-icon.PNG');
 
     return (
-        data ?
         <ExperienceWrapper>  
             <div className="container">         
                 {data.profile.map((item: any) => {
@@ -46,8 +45,6 @@ export default function Experience (props: IAppProps): JSX.Element {
                 })}  
             </div>             
         </ExperienceWrapper>
-        :
-        <React.Suspense fallback={<div>loading...</div>}></React.Suspense>
     )
 }
 

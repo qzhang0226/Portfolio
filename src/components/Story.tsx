@@ -8,22 +8,21 @@ interface StoryDivProps {
 
 export default function Story (props: IAppProps) {
 
+    const { data } = props;
+
     return (
-        props.data ?
-        <Wrapper bgColor={props.data.quotation[0].bgColor}>
+        <Wrapper bgColor={data.quotation[0].bgColor}>
             <div className="container">
                 <div className="offset-md-2 col-md-8 offset-md-2">
                     <div className="top">
-                        {props.data.quotation[0].sentence}
+                        {data.quotation[0].sentence}
                     </div>
                     <div className="bottom">
-                        {props.data.quotation[0].from}
+                        {data.quotation[0].from}
                     </div>
                 </div>
             </div>
         </Wrapper>
-        :
-        <React.Suspense fallback={<div>loading...</div>}></React.Suspense>
     )
 }
 

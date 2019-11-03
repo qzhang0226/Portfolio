@@ -4,28 +4,25 @@ import styled from 'styled-components';
 
 export default function About (props: IAppProps): JSX.Element {
 
-    const aboutData = props.data;
+    const { data } = props;
     
     return (
-        aboutData ?
         <CardWrapper> 
             <div className="image_container">
-                <img src={aboutData.postImage} alt="about" />
-                <div className="img_content"><h1>{aboutData.title}</h1></div>
+                <img src={data.postImage} alt="about" />
+                <div className="img_content"><h1>{data.title}</h1></div>
             </div>           
             <div className="container">
                 <div className="offset-md-2 col-md-8 offset-md-2">
                     <div className="header_content">
-                        {aboutData.header}
+                        {data.header}
                     </div>
                     <div className="story_content">
-                        {aboutData.content}
+                        {data.content}
                     </div>
                 </div>
             </div>
         </CardWrapper>
-        :
-        <React.Suspense fallback={<div>loading...</div>}></React.Suspense>
     );
 }
 

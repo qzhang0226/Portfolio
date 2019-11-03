@@ -6,8 +6,10 @@ export interface IState {
     profile: Object,
     project: Object,
     projectDetails: Object,
+    blogDetails: Object,
     blog: Object,
     message: string,
+    postId: number,
 }
 
 export interface IAction {

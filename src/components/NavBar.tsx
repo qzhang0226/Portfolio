@@ -18,9 +18,9 @@ export default function NavBar (props: INameProps) {
   const [scrollState, setScrollState] = React.useState(initialState);
 
   React.useEffect(() => {
-    window.addEventListener('scroll', () => handleScroll());    
+    window.addEventListener('scroll', handleScroll);    
     return () => {
-      window.removeEventListener('scroll', () => handleScroll())
+      window.removeEventListener('scroll', handleScroll)
     }
   }, []);
 

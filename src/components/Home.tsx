@@ -12,9 +12,10 @@ import * as Scroll from 'react-scroll';
 import styled from 'styled-components';
 import NavBar from './NavBar';
 import Footer from './Footer';
-import Blogs from './Blogs';
+import Blogs from './Blog/BlogSection';
 
 export default function Home() {
+
     const {state, dispatch} = React.useContext(Store);
     React.useEffect(() => {
         fetchHomeData(dispatch)
@@ -60,7 +61,7 @@ export default function Home() {
     }
 
     const blogProps: IAppProps = {
-        data: state.home.blog,
+        data: state.home.blogs,
         store: {state, dispatch},
     }
 
@@ -70,9 +71,9 @@ export default function Home() {
       scroll.scrollToTop();
     }
 
-    return (
-        <HomeWrapper>
-            <React.Suspense fallback={<div>loading...</div>}>
+    if(state.home._id) {
+        return (
+            <HomeWrapper>
                 <NavBar name="QI ZHANG"/>
                 <About {...aboutProps}/>
                 <Experience {...experienceProps}/>
@@ -87,12 +88,15 @@ export default function Home() {
                     onClick={() => scrollToTop()} 
                 />
                 <Footer name="Qi Zhang"/>
-            </React.Suspense>
-        </HomeWrapper>
-    )
+            </HomeWrapper>
+        )
+    }
+
+    return <div>loading...</div>
+
 }
 
-const HomeWrapper = styled("section")`
+const HomeWrapper = styled("div")`
     .fas{
         opacity: .6;
         font-size: 4rem;

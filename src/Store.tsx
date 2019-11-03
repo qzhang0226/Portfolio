@@ -7,8 +7,10 @@ const initialState: IState = {
     profile: Object,
     project: Object,
     projectDetails: Object,
+    blogDetails: Object,
     blog: Object,
     message: "",
+    postId: 0,
 };
 
 
@@ -22,6 +24,10 @@ function reducer(state: IState, action: IAction): IState {
             return {...state, message: action.payload};
         case 'FETCH_PROJECT_DETAILS_DATA':
             return {...state, projectDetails: action.payload};
+        case 'FETCH_BLOG_DETAILS_DATA':
+            return {...state, blogDetails: action.payload};
+        case 'BLOG_ID':
+            return {...state, postId: action.payload};
         default:
             return state;
     }
