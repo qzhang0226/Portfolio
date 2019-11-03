@@ -27,7 +27,7 @@ export const getWpBaseUrl = () => {
 export const fetchHomeData = async(dispatch: any) => {
 
   const URL = `${getBaseUrl()}home`;
-  const WPURL = `${getWpBaseUrl()}posts`;
+  const WPURL = `${getWpBaseUrl()}test`;
 
   const data = await fetch(URL);
   const blogData = await fetch(WPURL);
@@ -81,7 +81,7 @@ export const fetchProjectDetails = async(name: string, dispatch: any) => {
 }
 
 export const fetchBlogDetails = async(id: number, dispatch: any) => {
-  const WPURL = `${getWpBaseUrl()}posts/${id}`;
+  const WPURL = `${getWpBaseUrl()}test/${id}`;
   const data = await fetch(WPURL);
   const dataJSON = await data.json();
   return dispatch({

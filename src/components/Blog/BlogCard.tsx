@@ -9,17 +9,18 @@ export default function BlogCard (props: any): JSX.Element {
     const {dispatch} = React.useContext(Store);
 
     const handleClick = (id: number) => {
-        
         cleanUpBlogData(dispatch);
         localStorage.setItem("postId", id.toString())
     }
+
+    const { title, acf } = props;
 
     return (
         <CardWrapper onClick={() => handleClick(props.id)}>   
             <Link to={`blog/${props.slug}`}>                       
                 <div className="blogCard">
-                    {/* <img src={props.postImage} alt={props.name}/> */}
-                    <h3>{props.title.rendered}</h3>
+                    <img src={acf.image.sizes.medium_large} alt={acf.image.alt}/>
+                    <h3>{title.rendered}</h3>
                 </div>
             </Link>
         </CardWrapper>
