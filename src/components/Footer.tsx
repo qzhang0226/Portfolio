@@ -1,9 +1,9 @@
 import React from 'react';
-import { INameProps } from '../interfaces';
+import { IFormState } from '../interfaces';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export default function Footer (props: INameProps) {
+export default function Footer (props: IFormState) {
     return (
         <FooterWrapper id="footer">
             <p>Copyright</p>

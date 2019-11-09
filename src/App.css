@@ -26,3 +26,25 @@ a:hover{
 .container{
   text-align: center;
 }
+
+/* .fa-circle-notch {
+  font-size: 6em !important;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform-origin-x: left;
+} */
+.loader:empty {
+  width: 4em;
+  height: 4em;
+  margin: 100px auto;
+  border: .5em solid #f3f3f3;
+  border-left: .5em solid black;
+  border-radius: 50%;
+  animation: spin 1.1s infinite linear;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

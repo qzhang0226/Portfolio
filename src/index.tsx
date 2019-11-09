@@ -17,7 +17,7 @@ ReactDOM.render(
                 <App path='/'>
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/project/:slug" component={ProjectDetails}/>
-                    <Route exact path="/blog/all" component={AllBlogs}/>
+                    <Route exact path="/blog" component={AllBlogs}/>
                     <Route exact path="/blog/:slug" component={BlogDetails}/>
                 </App>
             </Switch>

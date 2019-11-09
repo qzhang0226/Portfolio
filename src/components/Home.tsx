@@ -10,7 +10,6 @@ import Contact from './Contact';
 import Map from './Map';
 import * as Scroll from 'react-scroll';
 import styled from 'styled-components';
-import NavBar from './NavBar';
 import Footer from './Footer';
 import Blogs from './Blog/BlogSection';
 
@@ -29,10 +28,14 @@ export default function Home() {
       }, []
     )
 
+    React.useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []);
+
     const handleScroll = () => {
         const myElement: HTMLElement | null = document.getElementById('back_to_top_icon');
         if(myElement){
-            if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+            if (document.body.scrollTop >= 150 || document.documentElement.scrollTop >= 150) {
                 myElement.style.right = "10px";
             } else {
                 myElement.style.right = "-100px";
@@ -74,7 +77,6 @@ export default function Home() {
     if(state.home._id) {
         return (
             <HomeWrapper>
-                <NavBar name="QI ZHANG"/>
                 <About {...aboutProps}/>
                 <Experience {...experienceProps}/>
                 <Projects {...projectProps}/>
@@ -92,12 +94,12 @@ export default function Home() {
         )
     }
 
-    return <div>loading...</div>
+    return <div className="loader container" />
 
 }
 
 const HomeWrapper = styled("div")`
-    .fas{
+    .fa-angle-double-up{
         opacity: .6;
         font-size: 4rem;
         cursor: pointer;

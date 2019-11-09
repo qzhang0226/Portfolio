@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { fetchProjectDetails } from '../actions/Action';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+import { Link } from 'react-router-dom';
 
 export default function ProjectDetails() {
 
@@ -14,51 +15,50 @@ export default function ProjectDetails() {
         fetchProjectDetails(name, dispatch)
     }, [name, dispatch]);
 
-    const handleClick = () => {
-        window.location.href = "/";
-    }
-
     const projectDetails = state.projectDetails._id ? state.projectDetails : undefined;
 
-    return (
-        projectDetails ?
-        <DetailsWrapper>
-            <CarouselWrapper>
-                {/* <div className=""> */}
-                    <div className="topRow">
-                        <img className="closeImg" src={require("../assets/icons/cross-img.PNG")} alt="close" onClick={() => handleClick()}/>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-8 col-xs-12">
-                            <Carousel  
-                                useKeyboardArrows 
-                                infiniteLoop
-                                showIndicators={false}
-                            >
-                                {projectDetails.postImage.map((image: any) => {
-                                    return (
-                                        <div key={image.name}>
-                                            <img src={image.url} alt={image.name} />
-                                            <p className="legend">{image.name}</p>                                        
-                                        </div>
-                                    )
-                                })}
-                                <iframe src={projectDetails.youtubeUrl} title={projectDetails.name} allowFullScreen><img src={projectDetails.youtubeImg} alt={`${projectDetails.name} youtube screenshot`} /></iframe>
-                            </Carousel>
+    if(projectDetails) {
+        return (
+            <DetailsWrapper>
+                <CarouselWrapper>
+                    {/* <div className=""> */}
+                        <Link to='/'>
+                            <div className="topRow">
+                                <img className="closeImg" src={require("../assets/icons/cross-img.PNG")} alt="close" />
+                            </div>
+                        </Link>
+                        <div className="row">
+                            <div className="col-md-8 col-xs-12">
+                                <Carousel  
+                                    useKeyboardArrows 
+                                    infiniteLoop
+                                    showIndicators={false}
+                                >
+                                    {projectDetails.postImage.map((image: any) => {
+                                        return (
+                                            <div key={image.name}>
+                                                <img src={image.url} alt={image.name} />
+                                                <p className="legend">{image.name}</p>                                        
+                                            </div>
+                                        )
+                                    })}
+                                    <iframe src={projectDetails.youtubeUrl} title={projectDetails.name} allowFullScreen><img src={projectDetails.youtubeImg} alt={`${projectDetails.name} youtube screenshot`} /></iframe>
+                                </Carousel>
+                            </div>
+                            <div className="col-md-4 col-xs-12">
+                                <div><span className="lableName">Project Name:</span> {projectDetails.title}</div>
+                                <div><span className="lableName">Keywords:</span> {projectDetails.keywords}</div>
+                                <div><span className="lableName">Description:</span> {projectDetails.description}</div>
+                            </div>
                         </div>
-                        <div className="col-md-4 col-xs-12">
-                            <div><span className="lableName">Project Name:</span> {projectDetails.title}</div>
-                            <div><span className="lableName">Keywords:</span> {projectDetails.keywords}</div>
-                            <div><span className="lableName">Description:</span> {projectDetails.description}</div>
-                        </div>
-                    </div>
-                {/* </div> */}
-            </CarouselWrapper>
+                    {/* </div> */}
+                </CarouselWrapper>
+    
+            </DetailsWrapper>
+        )
+    }
 
-        </DetailsWrapper>
-        :
-        <React.Suspense fallback={<div>loading...</div>}></React.Suspense>
-    )
+    return <div className="loader container" />
 }
 
 const DetailsWrapper = styled("section")`

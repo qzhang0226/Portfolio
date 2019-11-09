@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { cleanUpBlogData } from '../../actions/Action';
 import { Store } from '../../Store';
+import moment from 'moment';
 
 export default function BlogCard (props: any): JSX.Element {
     
@@ -19,9 +20,11 @@ export default function BlogCard (props: any): JSX.Element {
         <CardWrapper onClick={() => handleClick(props.id)}>   
             <Link to={`blog/${props.slug}`}>                       
                 <div className="blogCard">
+                    <div className="postTime">{moment(props.modified).format("MMM Do YY")}</div>
                     <img src={acf.image.sizes.medium_large} alt={acf.image.alt}/>
                     <h3>{title.rendered}</h3>
-                </div>
+                    {/* <hr /> */}
+                </div> 
             </Link>
         </CardWrapper>
     )
@@ -29,6 +32,7 @@ export default function BlogCard (props: any): JSX.Element {
 
 const CardWrapper = styled("div")`
     .blogCard{
+        position: relative;
         height: 250px;
         cursor: pointer;
         &:hover{
@@ -37,13 +41,20 @@ const CardWrapper = styled("div")`
                 opacity: 1;
                 transition: all 0.5s ease-in-out; 
             };
-            h3{
+            /* h3 {
                 background-image: linear-gradient(#FFDC00, #FF851B, #7FDBFF, #85144b);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 transition: all 1s ease-in-out;
             }
+            .postTime {
+                background-image: linear-gradient(#FFDC11, #FF851F, #7FDBFF, #85144b);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                transition: all 1s ease-in-out;
+            } */
         }
+        /* padding: 0 15px; */
     }; 
     img {
         object-fit: cover;
@@ -54,8 +65,8 @@ const CardWrapper = styled("div")`
         transition: all 0.5s ease-in-out;
     };
     h3 {
-        font-weight: 900;
-        font-size: 2em;
+        /* font-weight: 500; */
+        font-size: 1.5em;
         text-shadow: 0 2px 4px rgba(0,0,0,0.50);
         text-transform: uppercase;
         color: var(--mainWhite);
@@ -66,6 +77,24 @@ const CardWrapper = styled("div")`
         z-index: 5;
         transition: all 1s ease-in-out;
     };
+    .postTime {
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        font-size: 0.5em;
+        z-index: 5;
+        color: var(--mainWhite);
+        transition: all 1s ease-in-out;
+    }
+    /* hr {
+        border: none;
+        height: 0.1px;
+        color: var(--mainWhite);
+        background-color: var(--mainWhite);
+        position: absolute;
+        top: 78%;
+        width: 100%;
+    } */
 
     /* [class*=col-]{ 
         margin: 0 0 20px 0;

@@ -8,12 +8,14 @@ export default function BlogSection (props: IAppProps): JSX.Element {
 
     const { data } = props;
 
+    const firstThreePosts = data.slice(0, 3)
+
     return (
         <BlogsWrapper>
             <div className="container"> 
-                <h2>MY POSTS</h2>
+                <h2 className="mb-5">RECENT POSTS</h2>
                 <div className="row">
-                    {data.map((blog: any) => {
+                    {firstThreePosts.map((blog: any) => {
                         return (
                             <div key={blog.id} className="col-md-4 col-sm-6 col-xs-12">
                                 <BlogCard {...blog}/>
@@ -21,8 +23,8 @@ export default function BlogSection (props: IAppProps): JSX.Element {
                         )
                     })}
                 </div>
-                <Link to="/blog/all">
-                    <h5>All Posts</h5>
+                <Link to="/blog">
+                    <h5 className="mt-4">All Posts</h5>
                 </Link>
             </div> 
         </BlogsWrapper>

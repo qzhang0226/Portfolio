@@ -17,7 +17,7 @@ export const getWpBaseUrl = () => {
       var wpDevBaseUrl = process.env.REACT_APP_WP_DEV_BASE_URL;
       return wpDevBaseUrl;
     case "1":      
-      var wpProdBaseUrl = process.env.REACT_APP_WP_DEV_BASE_URL;
+      var wpProdBaseUrl = process.env.REACT_APP_WP_PROD_BASE_URL;
       return wpProdBaseUrl; 
     default:
       break;
@@ -27,7 +27,7 @@ export const getWpBaseUrl = () => {
 export const fetchHomeData = async(dispatch: any) => {
 
   const URL = `${getBaseUrl()}home`;
-  const WPURL = `${getWpBaseUrl()}test`;
+  const WPURL = `${getWpBaseUrl()}blog`;
 
   const data = await fetch(URL);
   const blogData = await fetch(WPURL);
@@ -45,7 +45,19 @@ export const fetchHomeData = async(dispatch: any) => {
     type: 'FETCH_HOME_DATA',
     payload: homeDataJson
   })
-}
+} 
+
+export const fetchAllBlogs = async(dispatch: any) => {
+
+  const WPURL = `${getWpBaseUrl()}blog`;
+  const blogData = await fetch(WPURL);
+  const blogDataJSON = await blogData.json();
+
+  return dispatch({
+    type: 'FETCH_BLOGS_DATA',
+    payload: blogDataJSON
+  })
+} 
 
 export const submitForm = async(formObj: object, dispatch: any) => {
   const settings = {
@@ -81,7 +93,7 @@ export const fetchProjectDetails = async(name: string, dispatch: any) => {
 }
 
 export const fetchBlogDetails = async(id: number, dispatch: any) => {
-  const WPURL = `${getWpBaseUrl()}test/${id}`;
+  const WPURL = `${getWpBaseUrl()}blog/${id}`;
   const data = await fetch(WPURL);
   const dataJSON = await data.json();
   return dispatch({

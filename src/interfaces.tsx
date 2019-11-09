@@ -7,7 +7,7 @@ export interface IState {
     project: Object,
     projectDetails: Object,
     blogDetails: Object,
-    blog: Object,
+    allBlog: Object,
     message: string,
     postId: number,
 }
@@ -41,8 +41,4 @@ export interface IFormState {
     [key: string]: any;
     // errors: IErrors;
     // submitSuccess?: boolean;
-}
-
-export interface INameProps {
-    name: string
 }
