@@ -25,7 +25,7 @@ function NavBar (props: any ) {
   });
 
   const handleScroll = () => {
-    if(window.pageYOffset > 150) {
+    if(window.pageYOffset > 0) {
       setScrollState({
         wrapper: "scrolledWrapper",
         headerWrapper: "scrolledHeaderWrapper",
@@ -69,12 +69,13 @@ function NavBar (props: any ) {
 const Wrapper = styled("section")`
   height: ${(props: WrapperProps) => props.className === "scrolledWrapper" ? "40px" : "180px"};
   box-shadow:  ${(props: WrapperProps) => props.className === "scrolledWrapper" && "0px 0px 3px 0px darkgrey"};
+  position: ${(props: WrapperProps) => props.className === "scrolledWrapper" ? "fixed" : "relative"};
   background: var(--mainWhite);
   overflow: hidden;
-  transition: all 0.3s ease-in-out;
-  position: fixed;
+  transition: all 0.1s ease-in-out;
+  /* position: fixed; */
   width: 100%;
-  top: 0;
+  top: ${(props: WrapperProps) => props.className === "scrolledWrapper" && "0"};
   z-index: 99;
 `
 const HeaderWrapper = styled("div")`

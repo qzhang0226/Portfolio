@@ -27,9 +27,7 @@ export default function BlogDetails(props: any): JSX.Element {
                 <BlogDetailsWrapper className="container">  
                     <h1 className="mb-3">{blogDetails.acf.title}</h1>
                     <h4>This is the subtitle</h4>
-                    <div className="blogImgContainer">
-                        <img src={blogDetails.acf.image.sizes.large} alt={blogDetails.acf.image.alt} />
-                    </div>
+                    <img src={blogDetails.acf.image.sizes.large} alt={blogDetails.acf.image.alt} />
                     <div dangerouslySetInnerHTML={{__html: blogDetails.content.rendered}}/>
                 </BlogDetailsWrapper>
             </>
@@ -42,11 +40,8 @@ export default function BlogDetails(props: any): JSX.Element {
 const BlogDetailsWrapper = styled("div")`
     text-align: left;
     height: 100%;
-    .blogImgContainer {
-        width: 100%;
-    }
     img {
-        background-size: cover;
+        width: 100%;
     }
     .has-light-gray-background-color {
         background-color: gray;
