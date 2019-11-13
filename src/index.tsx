@@ -9,18 +9,26 @@ import Home from './components/Home';
 import ProjectDetails from './components/ProjectDetails';
 import AllBlogs from './components/Blog/AllBlogs';
 import BlogDetails from './components/Blog/BlogDetails';
+import NavBar from './components/NavBar';
+import { ScrollIcon } from './components/ScrollIcon';
+import Footer from './components/Footer';
 
 ReactDOM.render( 
     <StoreProvider>
         <BrowserRouter>
-            <Switch>
-                <App path='/'>
-                    <Route exact path="/" component={Home}/>
-                    <Route exact path="/project/:slug" component={ProjectDetails}/>
-                    <Route exact path="/blog" component={AllBlogs}/>
-                    <Route exact path="/blog/:slug" component={BlogDetails}/>
-                </App>
-            </Switch>
+            <NavBar />
+            <div className="content">
+                <Switch>
+                    <App path='/'>
+                        <Route exact path="/" component={Home}/>
+                        <Route exact path="/project/:slug" component={ProjectDetails}/>
+                        <Route exact path="/blog" component={AllBlogs}/>
+                        <Route exact path="/blog/:slug" component={BlogDetails}/>
+                    </App>
+                </Switch>
+                <ScrollIcon />
+                <Footer name="Qi Zhang"/>
+            </div>            
         </BrowserRouter>
     </StoreProvider>, 
     document.getElementById('root')

@@ -1,7 +1,6 @@
 import React from 'react';
 // import {ThemeProvider, createGlobalStyle} from 'styled-components';
 import './App.css';
-import NavBar from './components/NavBar';
 
 // const GlobalStyle = createGlobalStyle`
 //   body{
@@ -15,10 +14,7 @@ export default function App(props: any): JSX.Element {
     // <ThemeProvider theme={{ mode: "dark"}}>
       <>
         {/* <GlobalStyle /> */}
-        <>
-          <NavBar />
-          {props.children}
-        </>
+        {props.children}
       </>
     // </ThemeProvider>
   );

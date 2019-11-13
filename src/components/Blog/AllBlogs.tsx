@@ -8,6 +8,8 @@ export default function AllBlogs (): JSX.Element {
     
     const {state, dispatch} = React.useContext(Store);
 
+    document.title = "Qi Zhang - All Blogs";
+
     React.useEffect(() => {
         fetchAllBlogs(dispatch)
     }, [dispatch]);

@@ -8,34 +8,38 @@ interface WrapperProps {
   className: string;
 }
 
-function NavBar (props: any ) {
+function NavBar (props: any) {
 
   const initialState: IFormState = {
     wrapper: "wrapper",
     headerWrapper: "headerWrapper",
+    pageLocation: props.location.pathname
   }
   
   const [scrollState, setScrollState] = React.useState(initialState);
 
   React.useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, false);
     return () => {
-      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('scroll', handleScroll, false)
     }
   });
 
   const handleScroll = () => {
-    if(window.pageYOffset > 0) {
+
+    let st = window.pageYOffset;
+
+    if(st > 0) {
       setScrollState({
         wrapper: "scrolledWrapper",
         headerWrapper: "scrolledHeaderWrapper",
       });
-    } else {
+    } else if(st < 180){
       setScrollState({
         wrapper: "wrapper",
         headerWrapper: "headerWrapper",
       });
-    } 
+    }
   };
   
   return (
@@ -43,12 +47,7 @@ function NavBar (props: any ) {
       <HeaderWrapper className={scrollState.headerWrapper}>
         <p><Link to="/">Qi Zhang</Link></p>
       </HeaderWrapper>
-      <NavWrapper id="navWrapper" className="navbar navbar-expand-lg px-sm-5">
-        {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button> */}
-        {/* <div className="collapse navbar-collapse" id="navbarTogglerDemo01"> */}
+      <NavWrapper id="navWrapper" className="navbar navbar-expand-lg px-sm-5 navbar-fixed-top">
         <ul className="navbar-nav">
           <li className="nav-item">
             <Link to="/">Home</Link>
@@ -60,7 +59,6 @@ function NavBar (props: any ) {
             <i className="fab fa-linkedin-in" />
           </a>          
         </ul>
-        {/* </div> */}
       </NavWrapper>
     </Wrapper>
   );
@@ -69,23 +67,23 @@ function NavBar (props: any ) {
 const Wrapper = styled("section")`
   height: ${(props: WrapperProps) => props.className === "scrolledWrapper" ? "40px" : "180px"};
   box-shadow:  ${(props: WrapperProps) => props.className === "scrolledWrapper" && "0px 0px 3px 0px darkgrey"};
-  position: ${(props: WrapperProps) => props.className === "scrolledWrapper" ? "fixed" : "relative"};
   background: var(--mainWhite);
   overflow: hidden;
-  transition: all 0.1s ease-in-out;
-  /* position: fixed; */
+  transition: all 0.3s ease-in-out;
+  position: fixed;
   width: 100%;
-  top: ${(props: WrapperProps) => props.className === "scrolledWrapper" && "0"};
+  top: 0;
   z-index: 99;
 `
 const HeaderWrapper = styled("div")`
     font-size: 1.41em;
     font-style: normal;
     text-align: center;
-    margin-top: 2.5em;
-    display: ${(props: WrapperProps) => props.className === "scrolledHeaderWrapper" ? "none" : "block"};
+    margin-top: ${(props: WrapperProps) => props.className === "scrolledHeaderWrapper" ? "0" : "2.5em"};
+    opacity: ${(props: WrapperProps) => props.className === "scrolledHeaderWrapper" ? "0" : "1"};
+    height: ${(props: WrapperProps) => props.className === "scrolledHeaderWrapper" ? "0" : "auto"}; 
     word-spacing: 0;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
 `
 const NavWrapper = styled("nav")`
   font-weight: 300;
