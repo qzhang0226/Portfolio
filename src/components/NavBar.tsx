@@ -85,7 +85,7 @@ function NavBar (props: any) {
     //     </ul>
     //   </NavWrapper>
     // </Wrapper>
-    <nav className="navbar navbar-expand-lg navbar-light">
+    <NavWrapper className="navbar navbar-expand-lg navbar-light">
       <Link className="navbar-brand" to="/">Qi Zhang</Link>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
@@ -98,9 +98,15 @@ function NavBar (props: any) {
           <li className="nav-item">
             <Link className="nav-link" to="/blog">Blogs</Link>
           </li>
+          {/* <a href="https://www.linkedin.com/in/qi-zhang-0226/" target="_blank" rel="noopener noreferrer" id="linkedin" className="linkedin-link">
+            <i className="fab fa-linkedin-in" />
+          </a>          
+          <a href="https://github.com/qzhang0226" target="_blank" rel="noopener noreferrer" id="github" className="github-link">
+            <i className="fab fa-github" />
+          </a>   */}
         </ul>
       </div>
-    </nav>
+    </NavWrapper>
   );
 }
 
@@ -133,19 +139,37 @@ const HeaderWrapper = styled("div")`
     }
 `
 const NavWrapper = styled("nav")`
-  flex-wrap: wrap;
-  font-weight: 300;
-  .navbar-nav{
-    margin: 0 auto;
-    cursor: pointer;
-  }
-  .navbar-nav > li{
-    padding-left:10px;
-    padding-right:10px;
-  }
-  .nav-item:hover{
-    background: var(--mainBlue);
-  }
+    text-align: center;
+    display: inherit;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    .navbar-nav{
+      transform: translateX(-5.8%);
+      margin: 0 auto;
+      cursor: pointer;
+    }
+    .navbar-brand {
+      padding-bottom: 1.3125rem;
+    }
+    // .linkedin-link{
+    //   float: right;
+    // }
+    // .github-link{
+    //   float: right;
+    // }
+  // flex-wrap: wrap;
+  // font-weight: 300;
+  // .navbar-nav{
+  //   margin: 0 auto;
+  //   cursor: pointer;
+  // }
+  // .navbar-nav > li{
+  //   padding-left:10px;
+  //   padding-right:10px;
+  // }
+  // .nav-item:hover{
+  //   background: var(--mainBlue);
+  // }
   /* .linkedin-link{
     position: absolute;
     right: 10%;

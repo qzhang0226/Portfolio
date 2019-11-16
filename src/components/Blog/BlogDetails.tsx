@@ -45,6 +45,8 @@ export default function BlogDetails(props: any): JSX.Element {
 }
 
 const BlogDetailsWrapper = styled("div")`
+
+
     /* font-family: 'Open Sans', sans-serif; */
     text-align: left;
     height: 100%;
@@ -77,6 +79,9 @@ const BlogDetailsWrapper = styled("div")`
             text-decoration: none;
         }
     }
+    h4 {
+        margin-bottom: 1rem;
+    }
     h5 {
         color: rgba(0, 0, 0, 0.54);
     }
@@ -86,10 +91,12 @@ const BlogDetailsWrapper = styled("div")`
         font-size: 0.8em;
     }
     .post_content {
-        line-height: 1.5;
-        /* letter-spacing: 0.04em; */
-        font-size: 1rem;
-        font-weight: 400
+        -webkit-font-smoothing: antialiased;
+        font-weight: 400;
+        font-size: 1em;
+        line-height: 1.8;
+        margin: 0;
+        text-rendering: optimizeLegibility;
     }
     // a::after {
     //     content: "\f35d";

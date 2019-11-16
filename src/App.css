@@ -37,9 +37,7 @@ a:hover{
   100% { transform: rotate(360deg); }
 }
 
-
 .content {
-  padding-top: 180px;
   min-height: 100vh;
   overflow: hidden;
   display: block;
