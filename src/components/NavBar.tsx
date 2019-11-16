@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import { IFormState } from '../interfaces';
@@ -16,14 +16,29 @@ function NavBar (props: any) {
     pageLocation: props.location.pathname
   }
   
-  const [scrollState, setScrollState] = React.useState(initialState);
+  const [scrollState, setScrollState] = useState(initialState);
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll, false);
     return () => {
-      window.removeEventListener('scroll', handleScroll, false)
+      window.removeEventListener('scroll', handleScroll, false);
     }
-  });
+  }, []);
+
+  useEffect(() => {
+    let navItem = document.getElementsByClassName("nav-item");
+    let navLink = document.getElementsByClassName("nav-link");
+    for (let i=0; i < navLink.length; i++) {
+      if(navLink[i].getAttribute("href") === scrollState.pageLocation) {
+        navItem[i].classList.add("active")
+      }
+      // navItem[i].addEventListener('click', function() {
+      //   var current = document.getElementsByClassName("active");
+      //   current[0].className = current[0].className.replace(" active", "");
+      //   navItem[i].classList.add("active");
+      // });
+    }
+  }, [])
 
   const handleScroll = () => {
 
@@ -41,26 +56,51 @@ function NavBar (props: any) {
       });
     }
   };
+
+  const handleClick = () => {
+    
+  }
   
   return (
-    <Wrapper className={scrollState.wrapper}>  
-      <HeaderWrapper className={scrollState.headerWrapper}>
-        <p><Link to="/">Qi Zhang</Link></p>
-      </HeaderWrapper>
-      <NavWrapper id="navWrapper" className="navbar navbar-expand-lg px-sm-5 navbar-fixed-top">
+    // <Wrapper className={scrollState.wrapper}>  
+    //   <NavWrapper id="navWrapper" className="navbar navbar-expand-lg px-sm-5 navbar-fixed-top">
+    //     <HeaderWrapper className={scrollState.headerWrapper}>
+    //       <Link to="/">Qi Zhang</Link>
+    //     </HeaderWrapper>
+    //     <ul className="navbar-nav">
+    //       <li className="nav-item">
+    //         <Link to="/">Home</Link>
+    //       </li>
+    //       <li className="nav-item">
+    //         <Link to="/blog">Blogs</Link>
+    //       </li>
+    //       <div className="social-media">
+    //       <a href="https://www.linkedin.com/in/qi-zhang-0226/" target="_blank" rel="noopener noreferrer" id="linkedin" className="linkedin-link">
+    //         <i className="fab fa-linkedin-in" />
+    //       </a>          
+    //       <a href="https://github.com/qzhang0226" target="_blank" rel="noopener noreferrer" id="github" className="github-link">
+    //         <i className="fab fa-github" />
+    //       </a>  
+    //     </div>   
+    //     </ul>
+    //   </NavWrapper>
+    // </Wrapper>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <Link className="navbar-brand" to="/">Qi Zhang</Link>
+      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link to="/">Home</Link>
+            <Link className="nav-link" to="/">Home</Link>
           </li>
           <li className="nav-item">
-            <Link to="/blog">Blogs</Link>
+            <Link className="nav-link" to="/blog">Blogs</Link>
           </li>
-          <a href="https://www.linkedin.com/in/qi-zhang-0226/" target="_blank" rel="noopener noreferrer" id="linkedin" className="linkedin-link">
-            <i className="fab fa-linkedin-in" />
-          </a>          
         </ul>
-      </NavWrapper>
-    </Wrapper>
+      </div>
+    </nav>
   );
 }
 
@@ -78,14 +118,22 @@ const Wrapper = styled("section")`
 const HeaderWrapper = styled("div")`
     font-size: 1.41em;
     font-style: normal;
+    float: left;
+    padding: 15px;
     text-align: center;
-    margin-top: ${(props: WrapperProps) => props.className === "scrolledHeaderWrapper" ? "0" : "2.5em"};
+    width: 100%;
+    /* text-align: center; */
+    /* margin-top: ${(props: WrapperProps) => props.className === "scrolledHeaderWrapper" ? "0" : "2.5em"}; */
     opacity: ${(props: WrapperProps) => props.className === "scrolledHeaderWrapper" ? "0" : "1"};
     height: ${(props: WrapperProps) => props.className === "scrolledHeaderWrapper" ? "0" : "auto"}; 
     word-spacing: 0;
     transition: all 0.3s ease-in-out;
+    p {
+      float: none;
+    }
 `
 const NavWrapper = styled("nav")`
+  flex-wrap: wrap;
   font-weight: 300;
   .navbar-nav{
     margin: 0 auto;
@@ -98,10 +146,14 @@ const NavWrapper = styled("nav")`
   .nav-item:hover{
     background: var(--mainBlue);
   }
-  .linkedin-link{
+  /* .linkedin-link{
     position: absolute;
     right: 10%;
   }
+  .github-link{
+    position: absolute;
+    right: 13%;
+  } */
 `;
 
 export default withRouter(NavBar)
