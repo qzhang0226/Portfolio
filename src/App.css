@@ -9,11 +9,6 @@ body{
   font-family: 'Cardo', serif;
 }
 
-/* #page_container{
-  position: relative;
-  min-height: 95vh;
-} */
-
 a{
   color: var(--mainDark);
 }
@@ -27,13 +22,6 @@ a:hover{
   text-align: center;
 }
 
-/* .fa-circle-notch {
-  font-size: 6em !important;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform-origin-x: left;
-} */
 .loader:empty {
   width: 4em;
   height: 4em;
@@ -47,4 +35,21 @@ a:hover{
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+
+.content {
+  padding-top: 180px;
+  min-height: 100vh;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 100px;
+}
+
+figcaption {
+  color: rgba(0,0,0,0.54);
+  text-align: center;
+  font-size: 0.8em;
+  padding-top: 1rem;
 }

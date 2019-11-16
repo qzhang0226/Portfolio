@@ -13,7 +13,7 @@ export default function About (props: IAppProps): JSX.Element {
                 <div className="img_content"><h1>{data.title}</h1></div>
             </div>           
             <div className="container">
-                <div className="offset-md-2 col-md-8 offset-md-2">
+                <div className="col-md-8 offset-md-2">
                     <div className="header_content">
                         {data.header}
                     </div>

@@ -16,9 +16,9 @@ export default function Footer (props: IFormState) {
 }
 
 const FooterWrapper = styled("div")`
-    /* position: absolute;
+    position: absolute;
     bottom: 0;
-    width: 100%; */
+    width: 100%;
     text-align: center;
     p{
         display: inline-block;

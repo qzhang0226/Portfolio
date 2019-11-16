@@ -23,7 +23,6 @@ export default function BlogCard (props: any): JSX.Element {
                     <div className="postTime">{moment(props.modified).format("MMM Do YY")}</div>
                     <img src={acf.image.sizes.medium_large} alt={acf.image.alt}/>
                     <h3>{title.rendered}</h3>
-                    {/* <hr /> */}
                 </div> 
             </Link>
         </CardWrapper>

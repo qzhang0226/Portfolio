@@ -20,7 +20,7 @@ export default function AllBlogs (): JSX.Element {
 
     const { allBlog } = state;
 
-    if(allBlog.length !== 1) {
+    if(allBlog[0]) {
         return (
             <BlogListWrapper>
                 <div className="container">

@@ -89,6 +89,7 @@ const NavWrapper = styled("nav")`
   font-weight: 300;
   .navbar-nav{
     margin: 0 auto;
+    cursor: pointer;
   }
   .navbar-nav > li{
     padding-left:10px;

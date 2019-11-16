@@ -13,11 +13,6 @@ export default function BlogDetails(props: any): JSX.Element {
     React.useEffect(() => {
         let mounted = true;
         if (mounted) fetchBlogDetails(postId, dispatch);
-        // const cleanUp = () => {
-        //     mounted = false;
-        //     cleanUpBlogData(dispatch);
-        // };
-        // return cleanUp();
     }, [postId, dispatch]);
 
     const { blogDetails } = state;
@@ -68,8 +63,7 @@ const BlogDetailsWrapper = styled("div")`
     }
     .post_basic_info {
         position: absolute;
-        top: 8px;
-        transform: translateY(0);
+        top: 5px;
         font-size: 0.5em;
         display: inline-block;
         padding-left: 1.5em;
