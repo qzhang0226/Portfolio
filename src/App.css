@@ -53,3 +53,8 @@ figcaption {
   font-size: 0.8em;
   padding-top: 1rem;
 }
+
+code {
+  background: darkgray;
+  color: rgba(0,0,0,1)
+}

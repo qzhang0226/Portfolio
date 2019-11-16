@@ -69,10 +69,12 @@ const BlogDetailsWrapper = styled("div")`
         padding-left: 1.5em;
     }
     a {
-        color: #ec4646;
+        color: #185EA5;
+        text-decoration: underline;
         cursor: pointer;
         &:hover {
             color: #0a4266;
+            text-decoration: none;
         }
     }
     h5 {
@@ -89,4 +91,14 @@ const BlogDetailsWrapper = styled("div")`
         font-size: 1rem;
         font-weight: 400
     }
+    // a::after {
+    //     content: "\f35d";
+    //     font-weight: 700;
+    //     position: relative;
+    //     display: inline-block;
+    //     font-family: "Font Awesome 5 Free";
+    //     text-align: center;
+    //     line-height: 1;
+    //     margin: 0 0 0 .3125em;
+    // }  
 `
