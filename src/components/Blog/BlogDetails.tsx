@@ -65,7 +65,7 @@ const BlogDetailsWrapper = styled("div")`
     }
     .post_basic_info {
         position: absolute;
-        top: 5px;
+        top: 25%;
         font-size: 0.5em;
         display: inline-block;
         padding-left: 1.5em;

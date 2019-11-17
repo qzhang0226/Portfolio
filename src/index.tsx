@@ -9,7 +9,6 @@ import Home from './components/Home';
 import ProjectDetails from './components/ProjectDetails';
 import AllBlogs from './components/Blog/AllBlogs';
 import BlogDetails from './components/Blog/BlogDetails';
-import NavBar from './components/NavBar';
 import { ScrollIcon } from './components/ScrollIcon';
 import Footer from './components/Footer';
 import MyNavBar from './components/MyNavBar';
@@ -17,7 +16,6 @@ import MyNavBar from './components/MyNavBar';
 ReactDOM.render( 
     <StoreProvider>
         <BrowserRouter>
-            {/* <NavBar /> */}
             <MyNavBar />
             <div className="content">
                 <Switch>
