@@ -15,6 +15,11 @@ export default function BlogDetails(props: any): JSX.Element {
         if (mounted) fetchBlogDetails(postId, dispatch);
     }, [postId, dispatch]);
 
+    
+    React.useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []);
+
     const { blogDetails } = state;
 
     if(blogDetails.id) {

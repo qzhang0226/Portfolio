@@ -74,8 +74,8 @@ const NavWrapper = styled("div")`
   .nav-button {
     display: inline-block;
     position: fixed;
-    top: 8%
-    right: 5%;
+    top: 1%;
+    right: 1%;
     z-index: 100;
     cursor: pointer;
   }
@@ -89,7 +89,7 @@ const NavWrapper = styled("div")`
   .changeBar1 {
     width: 35px;
     height: 3px;
-    background-color: #333;
+    background-color: var(--mainWhite);
     margin: 6px 0;
     transition: 0.4s;
     -webkit-transform: rotate(-45deg) translate(-5px, 5px);
@@ -98,7 +98,7 @@ const NavWrapper = styled("div")`
   .changeBar2 {
     width: 35px;
     height: 3px;
-    background-color: #333;
+    background-color: var(--mainWhite);
     margin: 6px 0;
     transition: 0.4s;
     opacity: 0;
@@ -106,7 +106,7 @@ const NavWrapper = styled("div")`
   .changeBar3 {
     width: 35px;
     height: 3px;
-    background-color: #333;
+    background-color: var(--mainWhite);
     margin: 6px 0;
     transition: 0.4s;
     -webkit-transform: rotate(45deg) translate(-8px, -8px);
@@ -187,9 +187,6 @@ const NavWrapper = styled("div")`
   @media only screen and (max-width: 991px){
     .normalView {
       display: none;
-    }
-    .nav-button {
-      top: 10.5%;
     }
     .navHeader {
       margin-top: 25px;

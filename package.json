@@ -12,7 +12,6 @@
     "@types/react-scroll": "^1.5.4",
     "@types/styled-components": "^4.1.16",
     "dotenv": "^8.0.0",
-    "html-to-react": "^1.4.2",
     "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
