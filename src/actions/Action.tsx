@@ -92,13 +92,13 @@ export const fetchProjectDetails = async(name: string, dispatch: any) => {
   })
 }
 
-export const fetchBlogDetails = async(id: number, dispatch: any) => {
-  const WPURL = `${getWpBaseUrl()}blog/${id}`;
+export const fetchBlogDetails = async(slug: string, dispatch: any) => {
+  const WPURL = `${getWpBaseUrl()}blog?slug=${slug}`;
   const data = await fetch(WPURL);
   const dataJSON = await data.json();
   return dispatch({
     type: 'FETCH_BLOG_DETAILS_DATA',
-    payload: dataJSON
+    payload: dataJSON[0]
   })
 }
 

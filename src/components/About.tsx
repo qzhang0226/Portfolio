@@ -28,6 +28,7 @@ export default function About (props: IAppProps): JSX.Element {
 
 const CardWrapper = styled("section")`
     margin-bottom: 100px;
+    
     .image_container{
         background-color: var(--mainDark);
         text-align: center;
@@ -40,7 +41,6 @@ const CardWrapper = styled("section")`
         width: 100%;
     }
     .img_content {
-        text-align: center;
         color: var(--mainWhite);
         position: absolute;
         top: 50%;

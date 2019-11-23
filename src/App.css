@@ -38,7 +38,8 @@ a:hover{
 }
 
 .content {
-  min-height: 100vh;
+  height: auto;
+  min-height: calc(100vh - 180px);
   overflow: hidden;
   display: block;
   position: relative;

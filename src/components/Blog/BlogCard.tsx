@@ -1,30 +1,47 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { cleanUpBlogData } from '../../actions/Action';
-import { Store } from '../../Store';
+// import { cleanUpBlogData } from '../../actions/Action';
+// import { Store } from '../../Store';
 import moment from 'moment';
 
 export default function BlogCard (props: any): JSX.Element {
     
-    const {dispatch} = React.useContext(Store);
+    // const {dispatch} = React.useContext(Store);
 
     const handleClick = (id: number) => {
-        cleanUpBlogData(dispatch);
-        localStorage.setItem("postId", id.toString())
+        // cleanUpBlogData(dispatch);
+        // localStorage.setItem("postId", id.toString())
     }
 
     const { title, acf } = props;
 
+    const renderCards = () => {
+        switch (props.page) {
+            case "All Blogs Page":
+                return (
+                    <Link to={`blog/${props.slug}`}>                       
+                        <div className="blog-card-all-page">
+                            <img src={acf.image.sizes.medium_large} alt={acf.image.alt}/>
+                        </div> 
+                    </Link>
+                )
+            default:
+                return (
+                    <Link to={`blog/${props.slug}`}>                       
+                        <div className="blogCard">
+                            <div className="postTime">{moment(props.modified).format("MMM Do YY")}</div>
+                            <img src={acf.image.sizes.medium_large} alt={acf.image.alt}/>
+                            <h3>{title.rendered}</h3>
+                        </div> 
+                    </Link>
+                )
+        }
+    }
+
     return (
         <CardWrapper onClick={() => handleClick(props.id)}>   
-            <Link to={`blog/${props.slug}`}>                       
-                <div className="blogCard">
-                    <div className="postTime">{moment(props.modified).format("MMM Do YY")}</div>
-                    <img src={acf.image.sizes.medium_large} alt={acf.image.alt}/>
-                    <h3>{title.rendered}</h3>
-                </div> 
-            </Link>
+            {renderCards()}
         </CardWrapper>
     )
 }
@@ -55,7 +72,7 @@ const CardWrapper = styled("div")`
         }
         /* padding: 0 15px; */
     }; 
-    img {
+    .blogCard img {
         object-fit: cover;
         width: 100%;
         height: 100%;
@@ -134,6 +151,18 @@ const CardWrapper = styled("div")`
         z-index: 5;
         transition: all 1s ease-in-out;
     } */
+
+    /* Styles for all blogs page */
+    .blog-card-all-page {
+        position: relative;
+        height: 350px;
+        cursor: pointer;
+    }
+    .blog-card-all-page img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
 `
 
 

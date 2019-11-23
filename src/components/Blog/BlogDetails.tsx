@@ -8,13 +8,18 @@ export default function BlogDetails(props: any): JSX.Element {
 
     const {state, dispatch} = React.useContext(Store);
 
-    const postId: any = localStorage.getItem("postId");
+    // const postId: any = localStorage.getItem("postId");
+
+    // React.useEffect(() => {
+    //     fetchBlogDetails(postId, dispatch);
+    // }, [postId, dispatch]);
+
+    const slug = props.match.params.slug;
+    document.title = `blog-${slug}`;
 
     React.useEffect(() => {
-        let mounted = true;
-        if (mounted) fetchBlogDetails(postId, dispatch);
-    }, [postId, dispatch]);
-
+        fetchBlogDetails(slug, dispatch);
+    }, [slug, dispatch]);
     
     React.useEffect(() => {
         window.scrollTo(0, 0)
@@ -23,7 +28,6 @@ export default function BlogDetails(props: any): JSX.Element {
     const { blogDetails } = state;
 
     if(blogDetails.id) {
-        document.title = blogDetails.slug;
         return (
             <>
                 <BlogDetailsWrapper className="container"> 
@@ -57,11 +61,12 @@ const BlogDetailsWrapper = styled("div")`
     height: 100%;
     img {
         width: 100%;
+        height: 100%;
     }
     .top_info {
         position: relative;
     }
-    .top_info>img {
+    .top_info img {
         height: 45px;
         width: 45px;
     }
@@ -103,14 +108,4 @@ const BlogDetailsWrapper = styled("div")`
         margin: 0;
         text-rendering: optimizeLegibility;
     }
-    // a::after {
-    //     content: "\f35d";
-    //     font-weight: 700;
-    //     position: relative;
-    //     display: inline-block;
-    //     font-family: "Font Awesome 5 Free";
-    //     text-align: center;
-    //     line-height: 1;
-    //     margin: 0 0 0 .3125em;
-    // }  
 `

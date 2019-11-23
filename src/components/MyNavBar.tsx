@@ -75,7 +75,7 @@ const NavWrapper = styled("div")`
     display: inline-block;
     position: fixed;
     top: 1%;
-    right: 1%;
+    right: 3%;
     z-index: 100;
     cursor: pointer;
   }
