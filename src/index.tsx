@@ -5,18 +5,20 @@ import App from './App';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import { StoreProvider } from './Store';
-import Home from './components/Home';
-import ProjectDetails from './components/ProjectDetails';
-import AllBlogs from './components/Blog/AllBlogs';
-import BlogDetails from './components/Blog/BlogDetails';
-import { ScrollIcon } from './components/ScrollIcon';
-import Footer from './components/Footer';
-import MyNavBar from './components/MyNavBar';
+import Maintain from './components/Maintain';
+// import Home from './components/Home';
+// import ProjectDetails from './components/ProjectDetails';
+// import AllBlogs from './components/Blog/AllBlogs';
+// import BlogDetails from './components/Blog/BlogDetails';
+// import { ScrollIcon } from './components/ScrollIcon';
+// import Footer from './components/Footer';
+// import MyNavBar from './components/MyNavBar';
 
 ReactDOM.render( 
     <StoreProvider>
         <BrowserRouter>
-            <MyNavBar />
+            <Maintain />
+            {/* <MyNavBar />
             <div className="content">
                 <Switch>
                     <App path='/'>
@@ -28,7 +30,7 @@ ReactDOM.render(
                 </Switch>
                 <ScrollIcon />
                 <Footer name="Qi Zhang"/>
-            </div>            
+            </div>             */}
         </BrowserRouter>
     </StoreProvider>, 
     document.getElementById('root')
