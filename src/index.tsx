@@ -5,7 +5,7 @@ import App from './App';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import { StoreProvider } from './Store';
-import Maintain from './components/Maintain';
+import Maintain from './components/Maintenance';
 // import Home from './components/Home';
 // import ProjectDetails from './components/ProjectDetails';
 // import AllBlogs from './components/Blog/AllBlogs';
