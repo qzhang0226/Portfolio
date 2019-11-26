@@ -1,25 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './App';
-// import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import { BrowserRouter } from 'react-router-dom';
+import App from './App';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+// import { BrowserRouter } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import { StoreProvider } from './Store';
-import Maintain from './components/Maintenance';
-// import Home from './components/Home';
-// import ProjectDetails from './components/ProjectDetails';
-// import AllBlogs from './components/Blog/AllBlogs';
-// import BlogDetails from './components/Blog/BlogDetails';
-// import { ScrollIcon } from './components/ScrollIcon';
-// import Footer from './components/Footer';
-// import MyNavBar from './components/MyNavBar';
+// import Maintain from './components/Maintenance';
+import Home from './components/Home';
+import ProjectDetails from './components/ProjectDetails';
+import AllBlogs from './components/Blog/AllBlogs';
+import BlogDetails from './components/Blog/BlogDetails';
+import { ScrollIcon } from './components/ScrollIcon';
+import Footer from './components/Footer';
+import MyNavBar from './components/MyNavBar';
 
 ReactDOM.render( 
     <StoreProvider>
         <BrowserRouter>
-            <Maintain />
-            {/* <MyNavBar />
+            {/* <Maintain /> */}
+            <MyNavBar />
             <div className="content">
                 <Switch>
                     <App path='/'>
@@ -31,7 +31,7 @@ ReactDOM.render(
                 </Switch>
                 <ScrollIcon />
                 <Footer name="Qi Zhang"/>
-            </div>             */}
+            </div>            
         </BrowserRouter>
     </StoreProvider>, 
     document.getElementById('root')
