@@ -1,28 +1,67 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import { IFormState } from '../interfaces';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 export interface IAppProps {
 }
 
-export default function MyNavBar (props: IFormState) {
+function MyNavBar (props: IFormState) {
 
-  const initialState: IFormState = {
-    buttonClicked: false
+  const initialNavState: IFormState = {
+    display: "block"
   }
 
-  const [buttonState, setButtonState] = useState(initialState);
+  const [navState, setNavState] = useState(initialNavState);
 
+  useEffect(() => {
+    if(props.location.pathname === "/project/dsny" || props.location.pathname === "/project/portfolio") {
+      setNavState({
+        display: "none"
+      });
+    } else {
+      setNavState({
+        display: "block"
+      });
+    }
+  }, [props.location.pathname])
+
+  const initialStateMobile: IFormState = {
+    buttonClicked: false,
+  }
+
+  const [buttonState, setClickState] = useState(initialStateMobile);
+  
   const handleButtonClick = () => {
-    setButtonState({
+    setClickState({
       buttonClicked: !buttonState.buttonClicked
     })
   }
 
+  const initialActiveState: IFormState = {
+    active: "homeLink"
+  }
+  const [activeState, setActiveState] = useState(initialActiveState)
+
+  const handleLinkClick = (e: any) => {
+    setClickState({
+      buttonClicked: !buttonState.buttonClicked,
+    });
+    const clicked = e.target.id;
+    if(activeState.active === clicked) {
+      setActiveState({
+        active: ''
+      })
+    } else {
+      setActiveState({
+        active: clicked
+      })
+    }
+  }
+
   return (
-    <NavWrapper>
+    <NavWrapper className={navState.display}>
         <Header name="Qi Zhang" className="navHeader" />  
         <div className="myNav normalView">
           <div className="normal-internal-links">
@@ -39,15 +78,15 @@ export default function MyNavBar (props: IFormState) {
           </div>
         </div>   
         <div className="myNav mobileView">
-          <div className="nav-button" onClick={handleButtonClick}>
+          <div className={buttonState.buttonClicked ? "nav-button-clicked" : "nav-button"} onClick={handleButtonClick}>
             <div className={buttonState.buttonClicked ? "changeBar1" : "bar1"}></div>
             <div className={buttonState.buttonClicked ? "changeBar2" : "bar2"}></div>
             <div className={buttonState.buttonClicked ? "changeBar3" : "bar3"}></div>
           </div>
           <div className={buttonState.buttonClicked ? "open" : "closed"}>
-            <div className="mobile-internal-links" onClick={handleButtonClick}>
-              <Link to="/">Home</Link>
-              <Link to="/blog" className="mt-5">Blogs</Link>
+            <div className="mobile-internal-links">
+              <Link id="homeLink" to="/" className={activeState.active === "homeLink" ? "active" : ""} onClick={handleLinkClick}>Home</Link>
+              <Link id="blogLink" to="/blog" className={`mt-5 ${activeState.active === "blogLink" ? "active" : ""}`} onClick={handleLinkClick}>Blogs</Link>
             </div>
             <div className="mobile-external-links">
               <a href="https://www.linkedin.com/in/qi-zhang-0226/" target="_blank" rel="noopener noreferrer" id="linkedin" className="linkedin-link">
@@ -63,7 +102,10 @@ export default function MyNavBar (props: IFormState) {
   );
 }
 
+export default withRouter(MyNavBar);
+
 const NavWrapper = styled("div")`
+  display: ${(props: IFormState) => props.className === "block" ? "block" : "none"};
   height: 180px;
   padding: 50px 0;
   text-align: center;
@@ -72,6 +114,16 @@ const NavWrapper = styled("div")`
     font-size: 1.5rem;
   }
   .nav-button {
+    opacity: .3;
+    display: inline-block;
+    position: fixed;
+    top: 1%;
+    right: 3%;
+    z-index: 100;
+    cursor: pointer;
+  }
+  .nav-button-clicked {
+    opacity: 1;
     display: inline-block;
     position: fixed;
     top: 1%;
@@ -143,7 +195,7 @@ const NavWrapper = styled("div")`
   }
   .mobile-internal-links a{
     font-size: 2rem;
-    color: #f1f1f1;
+    color: #989898;
     display: block;
     transition: 0.3s;
   }
@@ -155,7 +207,7 @@ const NavWrapper = styled("div")`
     transition: 0.3s;
   }
   .mobile-internal-links a:hover, .mobile-external-links a:hover {
-    color: #f1f1f1;
+    color: #FFFFFF;
   }
   .normal-external-links {
     display: inline-block;
@@ -178,6 +230,9 @@ const NavWrapper = styled("div")`
     left: 50%;
     transform: translate(-50%,-70%);
     -ms-transform: translate(-50%,-70%);
+  }  
+  .active {
+    color: #ffffff !important;
   }
   @media only screen and (min-width: 992px){
     .mobileView {

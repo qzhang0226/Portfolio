@@ -108,6 +108,12 @@ export const cleanUpBlogData = async(dispatch: any) => {
     payload: {}
   })
 }
+export const cleanProjectDetails = async(dispatch: any) => {
+  return dispatch({
+    type: 'FETCH_PROJECT_DETAILS_DATA',
+    payload: {}
+  })
+}
 
 
 

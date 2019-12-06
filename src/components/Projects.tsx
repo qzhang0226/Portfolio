@@ -9,10 +9,6 @@ export default function Projects (props: IAppProps): JSX.Element {
 
     const { data } = props;
 
-    const handleProjectClick = (name: string) => {
-        localStorage.setItem('projectName', name);
-    }
-
     return (
         <ProjectsWrapper>
             <div className="row">
@@ -28,7 +24,7 @@ export default function Projects (props: IAppProps): JSX.Element {
                     >
                     {data.projects.map((item: any) => {
                         return (
-                            <div className="carousel_image_container" key={item._id} onClick={() => handleProjectClick(item.name)}>   
+                            <div className="carousel_image_container" key={item._id}>   
                                 <Link to={`project/${item.name}`}>                  
                                     <img src={item.postImage} alt={item.title} />
                                     <div className="overlay"></div>

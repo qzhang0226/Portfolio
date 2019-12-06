@@ -23,16 +23,16 @@ export default function Experience (props: IAppProps): JSX.Element {
                 {data.experiences.map((item: any) => {
                     return (
                         <div className="row" key={item._id}>
-                            <div className="col-1"><img src={experienceIcon} alt="experience icon"/></div>
+                            <div className="col-md-1 col-sm-12 col-xs-12"><img src={experienceIcon} alt="experience icon"/></div>
                             <div className="col-md-3 col-sm-12 col-xs-12">
-                                <div className=""><strong>{item.title}</strong></div>
-                                <div className="">{item.duration}</div>
+                                <div>{item.title}</div>
+                                <div>{item.duration}</div>
                             </div>
                             <div className="col-md-8 col-sm-12 col-xs-12">
                                 {item.description.map((project: any) => {
                                     return (                             
                                         <div className="text-left mb-4" key={project.projectName}>
-                                            <div className="mb-2"><strong>{project.projectName}</strong></div>
+                                            <div className="mb-2">{project.projectName}</div>
                                             {project.responsibilities.map((duty: any) => {
                                                 return (<div key={duty}>&#8226; {duty}</div>)
                                             })}
@@ -66,23 +66,27 @@ const ExperienceWrapper = styled("section")`
     .profile_subtitle{
         font-size: 1.2em;
     }
-    .col-1{
+    .col-md-1{
         padding-top: 5px;
     }
-    .col-1 img{
+    .col-md-1 img{
         width: 50%;
         height: auto;
     }
     .row{
         margin: 0 auto;
-        padding-top: 50px;
+        padding-top: 3rem;
     }
     @media only screen and (max-width: 767px) {
-        .row .col-1{
-            display: none;
+        .row {
+            padding-top: 2rem;
+        }
+        .row .col-md-1 img{
+            width: 5%;
+            height: auto;
         }
         .col-sm-12{
-            margin-top: 15px;
+            margin-top: 1.5rem;
         }
     }
 `

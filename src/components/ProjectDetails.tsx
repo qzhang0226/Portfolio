@@ -1,17 +1,19 @@
 import React from 'react';
 import { Store } from '../Store';
 import styled from 'styled-components';
+// import { fetchProjectDetails, cleanProjectDetails } from '../actions/Action';
 import { fetchProjectDetails } from '../actions/Action';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import { Link } from 'react-router-dom';
 
-export default function ProjectDetails() {
+export default function ProjectDetails(props: any) {
 
     const {state, dispatch} = React.useContext(Store);
-    const name: any = localStorage.getItem('projectName');
+    const name: string = props.match.params.slug;
 
     React.useEffect(() => {
+        // cleanProjectDetails(dispatch);
         fetchProjectDetails(name, dispatch)
     }, [name, dispatch]);
 
@@ -21,37 +23,35 @@ export default function ProjectDetails() {
         return (
             <DetailsWrapper>
                 <CarouselWrapper>
-                    {/* <div className=""> */}
-                        <Link to='/'>
-                            <div className="topRow">
-                                <img className="closeImg" src={require("../assets/icons/cross-img.PNG")} alt="close" />
-                            </div>
-                        </Link>
-                        <div className="row">
-                            <div className="col-md-8 col-xs-12">
-                                <Carousel  
-                                    useKeyboardArrows 
-                                    infiniteLoop
-                                    showIndicators={false}
-                                >
-                                    {projectDetails.postImage.map((image: any) => {
-                                        return (
-                                            <div key={image.name}>
-                                                <img src={image.url} alt={image.name} />
-                                                <p className="legend">{image.name}</p>                                        
-                                            </div>
-                                        )
-                                    })}
-                                    <iframe src={projectDetails.youtubeUrl} title={projectDetails.name} allowFullScreen><img src={projectDetails.youtubeImg} alt={`${projectDetails.name} youtube screenshot`} /></iframe>
-                                </Carousel>
-                            </div>
-                            <div className="col-md-4 col-xs-12">
-                                <div><span className="lableName">Project Name:</span> {projectDetails.title}</div>
-                                <div><span className="lableName">Keywords:</span> {projectDetails.keywords}</div>
-                                <div><span className="lableName">Description:</span> {projectDetails.description}</div>
-                            </div>
+                    <Link to='/'>
+                        <div className="topRow">
+                            <img className="closeImg" src={require("../assets/icons/cross-img.PNG")} alt="close" />
                         </div>
-                    {/* </div> */}
+                    </Link>
+                    <div className="row">
+                        <div className="col-md-8 col-xs-12">
+                            <Carousel  
+                                useKeyboardArrows 
+                                infiniteLoop
+                                showIndicators={false}
+                            >
+                                {projectDetails.postImage.map((image: any) => {
+                                    return (
+                                        <div key={image.name}>
+                                            <img src={image.url} alt={image.name} />
+                                            <p className="legend">{image.name}</p>                                        
+                                        </div>
+                                    )
+                                })}
+                                <iframe src={projectDetails.youtubeUrl} title={projectDetails.name} allowFullScreen><img src={projectDetails.youtubeImg} alt={`${projectDetails.name} youtube screenshot`} /></iframe>
+                            </Carousel>
+                        </div>
+                        <div className="col-md-4 col-xs-12">
+                            <div><span className="lableName">Project Name:</span> {projectDetails.title}</div>
+                            <div><span className="lableName">Keywords:</span> {projectDetails.keywords}</div>
+                            <div><span className="lableName">Description:</span> {projectDetails.description}</div>
+                        </div>
+                    </div>
                 </CarouselWrapper>
     
             </DetailsWrapper>

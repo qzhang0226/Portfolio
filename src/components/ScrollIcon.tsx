@@ -49,8 +49,8 @@ export const ScrollIcon: React.FC<Props> = () => {
 
 const IconWrapper = styled("div")`
     .fa-angle-double-up{
-        opacity: .6;
-        font-size: 3rem;
+        opacity: .3;
+        font-size: 2.7rem;
         cursor: pointer;
         position: fixed;
         -webkit-transition: right 0.5s; /* For Safari 3.1 to 6.0 */

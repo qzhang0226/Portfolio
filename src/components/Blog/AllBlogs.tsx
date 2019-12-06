@@ -28,7 +28,7 @@ export default function AllBlogs (): JSX.Element {
                 <div className="container">
                     <div className="all-posts">All Posts</div>
                     {allBlog.map((blog: any) => {
-                        localStorage.setItem("postId", blog.id.toString())
+                        // localStorage.setItem("postId", blog.id.toString())
                         return (
                             <div key={blog.id} className="row pb-4">
                                 <div className="col-md-6 col-sm-6 col-xs-12">
