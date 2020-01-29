@@ -7,7 +7,7 @@ import Experience from './Experience';
 import Projects from './Projects';
 import Story from './Story';
 import Contact from './Contact';
-import Map from './Map';
+// import Map from './Map';
 import Blogs from './Blog/BlogSection';
 
 export default function Home() {
@@ -57,7 +57,7 @@ export default function Home() {
                 <Projects {...projectProps} />
                 <Story {...storyProps} />
                 <Contact />
-                <Map />
+                {/* <Map /> */}
                 <Blogs {...blogProps}/>
             </>
         )
